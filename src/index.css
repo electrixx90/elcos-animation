@@ -1,0 +1,20 @@
+.test-container {
+    max-width: 1600px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+.test-buttons {
+    flex: 1;
+}
+.test-buttons p {
+    font-size: 16px;
+    font-weight: bold;
+}
+.test-buttons button {
+    display: block;
+    margin-top: 10px;
+}
+.test-animation {
+    flex: 2;
+}
