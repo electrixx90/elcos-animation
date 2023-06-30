@@ -147,7 +147,7 @@ export default function ElcosAnimation({varName = '', valueName = ''}) {
   }
 
   useEffect(() => {
-    const element = document.getElementById('app').getElementsByTagName('svg')[0];
+    const element = document.getElementsByTagName('svg')[0];
     if(element) {
       element.svgatorPlayer.stop();
       setP(element.svgatorPlayer);
