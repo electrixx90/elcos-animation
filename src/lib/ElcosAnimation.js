@@ -187,7 +187,7 @@ export default function ElcosAnimation({events = []}) {
     }],
     'SinotticoReqT': [{
       'REQT_PRESS': [{
-        fn: (p) => p.seekTo(0).pause(),
+        fn: (p) => p.seekTo(500).pause(),
         duration: null,
         loop: false
       }],
