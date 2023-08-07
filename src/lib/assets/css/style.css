@@ -1,3 +1,7 @@
 .animation-container svg {
   position: absolute;
 }
+
+.animation-container svg#elcos-sinotticoep {
+  z-index: 10;
+}

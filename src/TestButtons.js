@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import ElcosAnimation from "./lib/ElcosAnimation";
 import './index.css';
 import _ from 'lodash';
@@ -152,6 +152,9 @@ export default function TestButtons() {
                   <p>SinotticoReqT</p>
                   <select ref={selectSinotticoReqT} onChange={(e) => manageEvents("SinotticoReqT", e.currentTarget.value)}>
                       <option value={null}></option>
+                      <option value="SinotticoReqT,REQT_NO">
+                          REQT_NO
+                      </option>
                       <option value="SinotticoReqT,REQT_PRESS">
                           REQT_PRESS
                       </option>
