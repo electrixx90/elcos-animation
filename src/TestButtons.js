@@ -27,7 +27,6 @@ export default function TestButtons() {
             es.push(value);
         }
 
-        console.log(es);
         setEvents(es);
     }
 

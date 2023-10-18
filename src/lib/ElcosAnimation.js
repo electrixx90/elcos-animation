@@ -29,6 +29,8 @@ export default function ElcosAnimation({events = []}) {
   const [reqPlayer, setReqPlayer] = useState(null);
   const [reqTPlayer, setReqTPlayer] = useState(null);
   const [statusPlayer, setStatusPlayer] = useState(null);
+  
+  const [intervals, setIntervals] = useState([]);
 
   const eventList = {
     'SinotticoMode': [{
@@ -226,13 +228,13 @@ export default function ElcosAnimation({events = []}) {
 
   useEffect(() => {
     const sAlarm = document.getElementById('elcos-sinotticoalarm');
-    const sEp = document.getElementById('elcos-sinotticoep');
+    const sEp = document.getElementById('elcos-sinotticoep-update');
     const sMains = document.getElementById('elcos-sinotticomains');
     const sMode = document.getElementById('elcos-sinotticomode');
-    const sMotor = document.getElementById('elcos-sinotticomotor');
+    const sMotor = document.getElementById('elcos-sinotticomotor_update');
     const sPress = document.getElementById('elcos-sinotticopress');
-    const sReq = document.getElementById('elcos-sinotticoreq');
-    const sReqT = document.getElementById('elcos-sinotticoreqt');
+    const sReq = document.getElementById('elcos-sinotticoreq_update');
+    const sReqT = document.getElementById('elcos-sinotticoreqt_update');
     const sStatus = document.getElementById('elcos-sinotticostatus');
 
     sAlarm.svgatorPlayer.stop();
@@ -273,77 +275,46 @@ export default function ElcosAnimation({events = []}) {
     return item['fn'](player);
   }
 
+  function processPlayerEvent(player, eventName, intv) {
+    if (player && events.length > 0) {
+      const flattenedEvents = _.flatten(events);
+      if (flattenedEvents.includes(eventName)) {
+        const e = _.find(events, e => e[0] === eventName);
+        const item = eventList[e[0]][0][e[1]][0];
+        const label = `${e[0]}-${e[1]}`;
+        const fInt = _.find(intervals, i => i[0] === label);
+
+        if (intervals.length && typeof fInt !== 'undefined') {
+          intv.push(fInt);
+        } else {
+          _.forEach(intervals, i => {
+            let eventName = i[0].split('-')[0];
+            if (typeof i[1] === 'number' && eventName === e[0]) clearInterval(i[1]);
+          });
+          // [etichetta_evento, identificativo_intervallo]
+          intv.push([label, createInterval(item, player)]);
+        }
+      }
+    }
+  }
+
+
   useEffect(() => {
-    let intervals = [];
+    let intv = [];
 
-    if(modePlayer && events.length > 0 && _.flatten(events).includes('SinotticoMode')) {
-      let e = _.find(events, e => e[0] === 'SinotticoMode');
-      let item = eventList[e[0]][0][e[1]][0];
+    processPlayerEvent(modePlayer, 'SinotticoMode', intv);
+    processPlayerEvent(mainsPlayer, 'SinotticoMains', intv);
+    processPlayerEvent(motorPlayer, 'SinotticoMotor', intv);
+    processPlayerEvent(epPlayer, 'SinotticoEP', intv);
+    processPlayerEvent(pressPlayer, 'SinotticoPress', intv);
+    processPlayerEvent(alarmPlayer, 'SinotticoAlarm', intv);
+    processPlayerEvent(statusPlayer, 'SinotticoStatus', intv);
+    processPlayerEvent(reqPlayer, 'SinotticoReq', intv);
+    processPlayerEvent(reqTPlayer, 'SinotticoReqT', intv);
 
-      intervals.push(createInterval(item, modePlayer));
-    }
+    setIntervals(intv);
 
-    if(mainsPlayer && events.length > 0 && _.flatten(events).includes('SinotticoMains')) {
-      let e = _.find(events, e => e[0] === 'SinotticoMains');
-      let item = eventList[e[0]][0][e[1]][0];
-
-      intervals.push(createInterval(item, mainsPlayer));
-    }
-
-    if(motorPlayer && events.length > 0 && _.flatten(events).includes('SinotticoMotor')) {
-      let e = _.find(events, e => e[0] === 'SinotticoMotor');
-      let item = eventList[e[0]][0][e[1]][0];
-
-      intervals.push(createInterval(item, motorPlayer));
-    }
-
-    if(epPlayer && events.length > 0 && _.flatten(events).includes('SinotticoEP')) {
-      let e = _.find(events, e => e[0] === 'SinotticoEP');
-      let item = eventList[e[0]][0][e[1]][0];
-
-      intervals.push(createInterval(item, epPlayer));
-    }
-
-    if(pressPlayer && events.length > 0 && _.flatten(events).includes('SinotticoPress')) {
-      let e = _.find(events, e => e[0] === 'SinotticoPress');
-      let item = eventList[e[0]][0][e[1]][0];
-
-      intervals.push(createInterval(item, pressPlayer));
-    }
-
-    if(alarmPlayer && events.length > 0 && _.flatten(events).includes('SinotticoAlarm')) {
-      let e = _.find(events, e => e[0] === 'SinotticoAlarm');
-      let item = eventList[e[0]][0][e[1]][0];
-
-      intervals.push(createInterval(item, alarmPlayer));
-    }
-
-    if(statusPlayer && events.length > 0 && _.flatten(events).includes('SinotticoStatus')) {
-      let e = _.find(events, e => e[0] === 'SinotticoStatus');
-      let item = eventList[e[0]][0][e[1]][0];
-
-      intervals.push(createInterval(item, statusPlayer));
-    }
-
-    if(reqPlayer && events.length > 0 && _.flatten(events).includes('SinotticoReq')) {
-      let e = _.find(events, e => e[0] === 'SinotticoReq');
-      let item = eventList[e[0]][0][e[1]][0];
-
-      intervals.push(createInterval(item, reqPlayer));
-    }
-
-    if(reqTPlayer && events.length > 0 && _.flatten(events).includes('SinotticoReqT')) {
-      let e = _.find(events, e => e[0] === 'SinotticoReqT');
-      let item = eventList[e[0]][0][e[1]][0];
-
-      intervals.push(createInterval(item, reqTPlayer));
-    }
-
-    return () => {
-      _.forEach(intervals, i => (typeof i === 'number') ? clearInterval(i) : null)
-    };
   }, [JSON.stringify(events)]);
-  // alarmPlayer, epPlayer, mainsPlayer, modePlayer, motorPlayer, pressPlayer, reqPlayer, reqTPlayer, statusPlayer,
 
   return (
     <div className="animation-container">

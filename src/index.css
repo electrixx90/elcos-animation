@@ -18,3 +18,8 @@
 .test-animation {
     flex: 2;
 }
+.animation-container {
+    width: 1200px;
+    display: block;
+    position: relative;
+}
