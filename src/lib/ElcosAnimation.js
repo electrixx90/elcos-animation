@@ -1,25 +1,24 @@
 import React, {useEffect, useState} from 'react';
-import SinotticoAlarm from "./SinotticoAlarm";
-import SinotticoEP from "./SinotticoEP";
-import SinotticoMains from "./SinotticoMains";
-import SinotticoMode from "./SinotticoMode";
-import SinotticoMotor from "./SinotticoMotor";
-import SinotticoPress from "./SinotticoPress";
-import SinotticoReq from "./SinotticoReq";
-import SinotticoReqT from "./SinotticoReqT";
-import SinotticoStatus from "./SinotticoStatus";
 import "./assets/css/style.css";
 import _ from "lodash";
+import CeaSmart from "./CeaSmart";
+import CSmart from "./CSmart";
+import {eventList} from "./data/eventList";
 
 /**
  *
  * @param events
+ * @param sinotticoName
  * @returns {JSX.Element}
  * @export events = [
  *  ["SinotticoMode", "MODE_OFF"], ["SinotticoMotor", "MOTOR_OFF"], ...
  * ]
+ * @export sinotticoName = 'cea_smart | c_smart'
  */
-export default function ElcosAnimation({events = []}) {
+export default function ElcosAnimation({
+                                         events = [],
+                                         sinotticoName = 'cea_smart'
+                                       }) {
   const [alarmPlayer, setAlarmPlayer] = useState(null);
   const [epPlayer, setEpPlayer] = useState(null);
   const [mainsPlayer, setMainsPlayer] = useState(null);
@@ -29,244 +28,172 @@ export default function ElcosAnimation({events = []}) {
   const [reqPlayer, setReqPlayer] = useState(null);
   const [reqTPlayer, setReqTPlayer] = useState(null);
   const [statusPlayer, setStatusPlayer] = useState(null);
-  
+  const [traliccioPlayer, setTraliccioPlayer] = useState(null);
+  const [reteAPlayer, setReteAPlayer] = useState(null);
+  const [reteBPlayer, setReteBPlayer] = useState(null);
+  const [cbaPlayer, setCbaPlayer] = useState(null);
+  const [cbbPlayer, setCbbPlayer] = useState(null);
+  const [battAPlayer, setBattAPlayer] = useState(null);
+  const [battBPlayer, setBattBPlayer] = useState(null);
+  const [enginePlayer, setEnginePlayer] = useState(null);
+  const [engineProtPlayer, setEngineProtPlayer] = useState(null);
+
   const [intervals, setIntervals] = useState([]);
 
-  const eventList = {
-    'SinotticoMode': [{
-      'MODE_OFF': [{
-        fn: (p) => p.seekTo(1500).pause(),
-        duration: 2000,
-        loop: false
-      }],
-      'MODE_MAN': [{
-        fn: (p) => p.seekTo(2500).pause(),
-        duration: 2000,
-        loop: false
-      }],
-      'MODE_AUT': [{
-        fn: (p) => p.seekTo(3500).pause(),
-        duration: 2000,
-        loop: false
-      }],
-      'MODE_AUT_ESC': [{
-        fn: (p) => p.seekTo(4500).pause(),
-        duration: 2000,
-        loop: false
-      }],
-      'MODE_AUT_INC': [{
-        fn: (p) => p.seekTo(0).pause(),
-        duration: null,
-        loop: false
-      }]
-    }],
-    'SinotticoMains': [{
-      'MAINS_ABS': [{
-        fn: (p) => p.seekTo(0).pause(),
-        duration: 2000,
-        loop: false,
-      }],
-      'MAINS_PRES': [{
-        fn: (p) => {
-          p.seekTo(0).play();
-          return setTimeout(() => p.pause(), 2000);
-        },
-        duration: null,
-        loop: false,
-      }],
-      'MAINS_ANOM': [{
-        fn: (p) => p.seekTo(5000).play(),
-        duration: 2000,
-        loop: true,
-      }],
-      'MAINS_WAIT': [{
-        fn: (p) => p.seekTo(2000).play(),
-        duration: 2000,
-        loop: true,
-      }]
-    }],
-    'SinotticoMotor': [{
-      'MOTOR_OFF': [{
-        fn: (p) => {
-          p.seekTo(0).play();
-          return setTimeout(() => p.pause(), 1000);
-        },
-        duration: null,
-        loop: false
-      }],
-      'MOTOR_ON': [{
-        fn: (p) => p.seekTo(3000).play(),
-        duration: 2000,
-        loop: true
-      }]
-    }],
-    'SinotticoEP': [{
-      'EP_OFF': [{
-        fn: (p) => p.seekTo(0).pause(),
-        duration: null,
-        loop: false
-      }],
-      'EP_ON': [{
-        fn: (p) => p.seekTo(2000).play(),
-        duration: 2000,
-        loop: true
-      }]
-    }],
-    'SinotticoPress': [{
-      'PRESS_EXCL': [{
-        fn: (p) => {
-          p.seekTo(1000).play();
-          return setTimeout(() => p.pause(), 1000);
-        },
-        duration: null,
-        loop: false
-      }],
-      'PRESS_YES': [{
-        fn: (p) => p.seekTo(0).pause(),
-        duration: null,
-        loop: false
-      }],
-      'PRESS_NO': [{
-        fn: (p) => {
-          p.seekTo(3000).play();
-          return setTimeout(() => p.pause(), 3000);
-        },
-        duration: null,
-        loop: false
-      }]
-    }],
-    'SinotticoAlarm': [{
-      'ALARM_NO': [{
-        fn: (p) => p.seekTo(0).pause(),
-        duration: null,
-        loop: false
-      }],
-      'ALARM_Y_B': [{
-        fn: (p) => {
-          p.seekTo(2000).play();
-          return setTimeout(() => p.pause(), 2400);
-        },
-        duration: null,
-        loop: false
-      }],
-      'ALARM_Y_A': [{
-        fn: (p) => {
-          p.seekTo(5000).play();
-          return setTimeout(() => p.pause(), 2400);
-        },
-        duration: null,
-        loop: false
-      }]
-    }],
-    'SinotticoStatus': [{
-      'ANOM_NO': [{
-        fn: (p) => p.seekTo(0).pause(),
-        duration: null,
-        loop: false
-      }],
-      'ANOM_YES': [{
-        fn: (p) => p.seekTo(1000).play(),
-        duration: 2000,
-        loop: true
-      }]
-    }],
-    'SinotticoReq': [{
-      'REQ_NO': [{
-        fn: (p) => p.seekTo(0).pause(),
-        duration: null,
-        loop: false
-      }],
-      'REQ_START': [{
-        fn: (p) => p.seekTo(3000).pause(),
-        duration: null,
-        loop: false
-      }],
-      'REQ_STOP': [{
-        fn: (p) => p.seekTo(7000).pause(),
-        duration: null,
-        loop: false
-      }]
-    }],
-    'SinotticoReqT': [{
-      'REQT_NO': [{
-        fn: (p) => p.seekTo(0).pause(),
-        duration: null,
-        loop: false
-      }],
-      'REQT_PRESS': [{
-        fn: (p) => p.seekTo(500).pause(),
-        duration: null,
-        loop: false
-      }],
-      'REQT_GALL': [{
-        fn: (p) => p.seekTo(5000).pause(),
-        duration: null,
-        loop: false
-      }],
-      'REQT_TEST': [{
-        fn: (p) => p.seekTo(2000).play(),
-        duration: 1000,
-        loop: true
-      }],
-      'REQT_TP': [{
-        fn: (p) => p.seekTo(6000).pause(),
-        duration: null,
-        loop: false
-      }],
-      'REQT_IN': [{
-        fn: (p) => p.seekTo(7000).play(),
-        duration: 1000,
-        loop: true
-      }],
-      'REQT_KEY': [{
-        fn: (p) => p.seekTo(11600).pause(),
-        duration: null,
-        loop: false
-      }],
-    }]
-  }
+  const getSinotticoPartialId = (name) => eventList[name][1][sinotticoName] || "__null__"
 
   useEffect(() => {
-    const sAlarm = document.getElementById('elcos-sinotticoalarm');
-    const sEp = document.getElementById('elcos-sinotticoep-update');
-    const sMains = document.getElementById('elcos-sinotticomains');
-    const sMode = document.getElementById('elcos-sinotticomode');
-    const sMotor = document.getElementById('elcos-sinotticomotor_update');
-    const sPress = document.getElementById('elcos-sinotticopress');
-    const sReq = document.getElementById('elcos-sinotticoreq_update');
-    const sReqT = document.getElementById('elcos-sinotticoreqt_update');
-    const sStatus = document.getElementById('elcos-sinotticostatus');
+    const sAlarm = document.getElementById(getSinotticoPartialId('SinotticoAlarm'));
+    const sEp = document.getElementById(getSinotticoPartialId('SinotticoEP'));
+    const sMains = document.getElementById(getSinotticoPartialId('SinotticoMains'));
+    const sMode = document.getElementById(getSinotticoPartialId('SinotticoMode'));
+    const sMotor = document.getElementById(getSinotticoPartialId('SinotticoMotor'));
+    const sPress = document.getElementById(getSinotticoPartialId('SinotticoPress'));
+    const sReq = document.getElementById(getSinotticoPartialId('SinotticoReq'));
+    const sReqT = document.getElementById(getSinotticoPartialId('SinotticoReqT'));
+    const sStatus = document.getElementById(getSinotticoPartialId('SinotticoStatus'));
 
-    sAlarm.svgatorPlayer.stop();
-    setAlarmPlayer(sAlarm.svgatorPlayer);
+    const sTral = document.getElementById(getSinotticoPartialId('SinotticoTraliccio'));
+    const sReteA = document.getElementById(getSinotticoPartialId('SinotticoReteA'));
+    const sReteB = document.getElementById(getSinotticoPartialId('SinotticoReteB'));
+    const sCBA = document.getElementById(getSinotticoPartialId('SinotticoCBA'));
+    const sCBB = document.getElementById(getSinotticoPartialId('SinotticoCBB'));
+    const sBattA = document.getElementById(getSinotticoPartialId('SinotticoBattA'));
+    const sBattB = document.getElementById(getSinotticoPartialId('SinotticoBattB'));
+    const sEngine = document.getElementById(getSinotticoPartialId('SinotticoEngine'));
+    const sEngineProt = document.getElementById(getSinotticoPartialId('SinotticoEngineProt'));
 
-    sEp.svgatorPlayer.stop();
-    setEpPlayer(sEp.svgatorPlayer);
+    if (sAlarm) {
+      sAlarm.svgatorPlayer.stop();
+      setAlarmPlayer(sAlarm.svgatorPlayer);
+    } else {
+      setAlarmPlayer(null);
+    }
 
-    sMains.svgatorPlayer.stop();
-    setMainsPlayer(sMains.svgatorPlayer);
+    if (sEp) {
+      sEp.svgatorPlayer.stop();
+      setEpPlayer(sEp.svgatorPlayer);
+    } else {
+      setEpPlayer(null);
+    }
 
-    sMode.svgatorPlayer.stop();
-    setModePlayer(sMode.svgatorPlayer);
+    if (sMains) {
+      sMains.svgatorPlayer.stop();
+      setMainsPlayer(sMains.svgatorPlayer);
+    } else {
+      setMainsPlayer(null);
+    }
 
-    sMotor.svgatorPlayer.stop();
-    setMotorPlayer(sMotor.svgatorPlayer);
+    if (sMode) {
+      sMode.svgatorPlayer.stop();
+      setModePlayer(sMode.svgatorPlayer);
+    } else {
+      setModePlayer(null);
+    }
 
-    sPress.svgatorPlayer.stop();
-    setPressPlayer(sPress.svgatorPlayer);
+    if (sMotor) {
+      sMotor.svgatorPlayer.stop();
+      setMotorPlayer(sMotor.svgatorPlayer);
+    } else {
+      setMotorPlayer(null);
+    }
 
-    sReq.svgatorPlayer.stop();
-    setReqPlayer(sReq.svgatorPlayer);
+    if (sPress) {
+      sPress.svgatorPlayer.stop();
+      setPressPlayer(sPress.svgatorPlayer);
+    } else {
+      setPressPlayer(null);
+    }
 
-    sReqT.svgatorPlayer.stop();
-    setReqTPlayer(sReqT.svgatorPlayer);
+    if (sReq) {
+      sReq.svgatorPlayer.stop();
+      setReqPlayer(sReq.svgatorPlayer);
+    } else {
+      setReqPlayer(null);
+    }
 
-    sStatus.svgatorPlayer.stop();
-    setStatusPlayer(sStatus.svgatorPlayer);
-  }, []);
+    if (sReqT) {
+      sReqT.svgatorPlayer.stop();
+      setReqTPlayer(sReqT.svgatorPlayer);
+    } else {
+      setReqTPlayer(null);
+    }
+
+    if (sStatus) {
+      sStatus.svgatorPlayer.stop();
+      setStatusPlayer(sStatus.svgatorPlayer);
+    } else {
+      setStatusPlayer(null);
+    }
+
+    if (sTral) {
+      sTral.svgatorPlayer.stop();
+      setTraliccioPlayer(sTral.svgatorPlayer);
+    } else {
+      setTraliccioPlayer(null);
+    }
+
+    if (sReteA) {
+      sReteA.svgatorPlayer.stop();
+      setReteAPlayer(sReteA.svgatorPlayer);
+    } else {
+      setReteAPlayer(null);
+    }
+
+    if (sReteB) {
+      sReteB.svgatorPlayer.stop();
+      setReteBPlayer(sReteB.svgatorPlayer);
+    } else {
+      setReteBPlayer(null);
+    }
+
+    if (sCBA) {
+      sCBA.svgatorPlayer.stop();
+      setCbaPlayer(sCBA.svgatorPlayer);
+    } else {
+      setCbaPlayer(null);
+    }
+
+    if (sCBB) {
+      sCBB.svgatorPlayer.stop();
+      setCbbPlayer(sCBB.svgatorPlayer);
+    } else {
+      setCbbPlayer(null);
+    }
+
+    if (sBattA) {
+      sBattA.svgatorPlayer.stop();
+      setBattAPlayer(sBattA.svgatorPlayer);
+    } else {
+      setBattAPlayer(null);
+    }
+
+    if (sBattB) {
+      sBattB.svgatorPlayer.stop();
+      setBattBPlayer(sBattB.svgatorPlayer);
+    } else {
+      setBattBPlayer(null);
+    }
+
+    if (sEngine) {
+      sEngine.svgatorPlayer.stop();
+      setEnginePlayer(sEngine.svgatorPlayer);
+    } else {
+      setEnginePlayer(null);
+    }
+
+    if (sEngineProt) {
+      sEngineProt.svgatorPlayer.stop();
+      setEngineProtPlayer(sEngineProt.svgatorPlayer);
+    } else {
+      setEngineProtPlayer(null);
+    }
+
+    setIntervals([]);
+  }, [sinotticoName]);
 
   const createInterval = (item, player) => {
-    if(item.loop) {
+    if (item.loop) {
       return setInterval(() => {
         item['fn'](player);
       }, item['duration']);
@@ -312,21 +239,25 @@ export default function ElcosAnimation({events = []}) {
     processPlayerEvent(reqPlayer, 'SinotticoReq', intv);
     processPlayerEvent(reqTPlayer, 'SinotticoReqT', intv);
 
+    processPlayerEvent(traliccioPlayer, 'SinotticoTraliccio', intv);
+    processPlayerEvent(reteAPlayer, 'SinotticoReteA', intv);
+    processPlayerEvent(reteBPlayer, 'SinotticoReteB', intv);
+    processPlayerEvent(cbaPlayer, 'SinotticoCBA', intv);
+    processPlayerEvent(cbbPlayer, 'SinotticoCBB', intv);
+    processPlayerEvent(battAPlayer, 'SinotticoBattA', intv);
+    processPlayerEvent(battBPlayer, 'SinotticoBattB', intv);
+    processPlayerEvent(enginePlayer, 'SinotticoEngine', intv);
+    processPlayerEvent(engineProtPlayer, 'SinotticoEngineProt', intv);
+
     setIntervals(intv);
 
   }, [JSON.stringify(events)]);
 
-  return (
-    <div className="animation-container">
-      <SinotticoAlarm />
-      <SinotticoEP />
-      <SinotticoMains />
-      <SinotticoMode />
-      <SinotticoMotor />
-      <SinotticoPress />
-      <SinotticoReq />
-      <SinotticoReqT />
-      <SinotticoStatus />
-    </div>
-  )
+  switch (sinotticoName) {
+    case 'cea_smart':
+      return (<CeaSmart sinotticoName={sinotticoName} />);
+
+    case 'c_smart':
+      return (<CSmart sinotticoName={sinotticoName} />);
+  }
 }

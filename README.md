@@ -16,7 +16,7 @@ import ElcosAnimation from "elcos-animation/src/lib/ElcosAnimation";
 function QualsiasiComponente() {
     return (
         <>
-            <ElcosAnimation events={[]} />
+            <ElcosAnimation events={[]} sinotticoName={"cea_smart"} />
         </>
     )
 }
@@ -39,3 +39,5 @@ La proprietà `events` conterrà un array di eventi, ciascuno costituito da una 
     ["SinotticoMode", "MODE_AUT"],
 ]
 ```
+
+La proprietà `sinotticoName` conterrà una stringa per richiamare la tipologia di centralina ovvero `cea_smart` oppure `c_smart`.

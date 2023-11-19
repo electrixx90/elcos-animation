@@ -3,13 +3,20 @@
     display: flex;
     align-items: center;
     align-content: center;
+    column-gap: 40px;
 }
 .test-buttons {
     flex: 1;
+    max-width: 200px;
 }
 .test-buttons p {
     font-size: 16px;
     font-weight: bold;
+    margin-bottom: 5px;
+}
+.test-buttons select {
+    margin-bottom: 15px;
+    width: 100%;
 }
 .test-buttons button {
     display: block;
@@ -22,4 +29,31 @@
     width: 1200px;
     display: block;
     position: relative;
+    height: 800px;
+}
+
+.d-none {
+    display: none;
+}
+
+.sinottico-name-container p {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.sinottico-name-container select {
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.sinottico-name-container p, .sinottico-name-container select {
+    display: inline;
+}
+
+div.separator {
+    width: 100%;
+    height: 1px;
+    background-color: #000000;
+    margin: 20px 0;
 }
