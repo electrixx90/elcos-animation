@@ -114,7 +114,7 @@ export const eventList = {
     }]
   }, {
     "cea_smart": 'elcos-sinotticopress',
-    "c_smart": "egwc3QMu9G71"
+    "c_smart": "eIeUQ9qTDz81"
   }],
   'SinotticoAlarm': [{
     'ALARM_NO': [{
@@ -294,7 +294,7 @@ export const eventList = {
     }],
   }, {
     "cea_smart": "",
-    "c_smart": 'ef56mEudNrp1'
+    "c_smart": 'eai0qVIDUWk1'
   }],
   "SinotticoCBB": [{
     "CB_ABS": [{
@@ -314,7 +314,7 @@ export const eventList = {
     }],
   }, {
     "cea_smart": "",
-    "c_smart": 'ehKUS6e0Em81'
+    "c_smart": 'e0exuwTGdfr1'
   }],
   "SinotticoBattA": [{
     "BATT_ABS": [{
@@ -334,7 +334,7 @@ export const eventList = {
     }],
   }, {
     "cea_smart": "",
-    "c_smart": 'e9h0VUG84aL1'
+    "c_smart": 'eWf7GUbjEtw1'
   }],
   "SinotticoBattB": [{
     "BATT_ABS": [{
@@ -354,7 +354,7 @@ export const eventList = {
     }],
   }, {
     "cea_smart": "",
-    "c_smart": 'eRdP1nocCSN1'
+    "c_smart": 'eod3K6pTL7z1'
   }],
   "SinotticoEngine": [{
     "ENGINE_ON": [{
