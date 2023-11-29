@@ -175,7 +175,7 @@ export const eventList = {
     }]
   }, {
     "cea_smart": 'elcos-sinotticoreq_update',
-    "c_smart": "eQiAnXxsYda1"
+    "c_smart": "etnfMZoIJL21"
   }],
   'SinotticoReqT': [{
     'REQT_NO': [{
@@ -215,7 +215,7 @@ export const eventList = {
     }],
   }, {
     "cea_smart": 'elcos-sinotticoreqt_update',
-    "c_smart": "eaxNuSeQoM81"
+    "c_smart": "e9hYoJp2ki81"
   }],
 
   "SinotticoTraliccio": [{
@@ -254,7 +254,7 @@ export const eventList = {
     }],
   }, {
     "cea_smart": "",
-    "c_smart": 'e0lKh5zRbwi1'
+    "c_smart": 'e8N2hvEBqJC1'
   }],
   "SinotticoReteB": [{
     "CBRETE_ABS": [{
@@ -274,7 +274,7 @@ export const eventList = {
     }],
   }, {
     "cea_smart": "",
-    "c_smart": 'ePwOxV6kCoX1'
+    "c_smart": 'e1LApFgZYIe1'
   }],
   "SinotticoCBA": [{
     "CB_ABS": [{
@@ -294,7 +294,7 @@ export const eventList = {
     }],
   }, {
     "cea_smart": "",
-    "c_smart": 'eai0qVIDUWk1'
+    "c_smart": 'eaEfDn1dIwO1'
   }],
   "SinotticoCBB": [{
     "CB_ABS": [{
@@ -314,7 +314,7 @@ export const eventList = {
     }],
   }, {
     "cea_smart": "",
-    "c_smart": 'e0exuwTGdfr1'
+    "c_smart": 'egBFsakRNuL1'
   }],
   "SinotticoBattA": [{
     "BATT_ABS": [{
@@ -334,7 +334,7 @@ export const eventList = {
     }],
   }, {
     "cea_smart": "",
-    "c_smart": 'eWf7GUbjEtw1'
+    "c_smart": 'eHPMziIT73B1'
   }],
   "SinotticoBattB": [{
     "BATT_ABS": [{
@@ -354,7 +354,7 @@ export const eventList = {
     }],
   }, {
     "cea_smart": "",
-    "c_smart": 'eod3K6pTL7z1'
+    "c_smart": 'elpv7KT3ASR1'
   }],
   "SinotticoEngine": [{
     "ENGINE_ON": [{
@@ -387,6 +387,6 @@ export const eventList = {
     }],
   }, {
     "cea_smart": "",
-    "c_smart": 'eUZAyWHV1GD1'
+    "c_smart": 'eMPUc60ars41'
   }]
 }

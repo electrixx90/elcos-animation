@@ -5,3 +5,19 @@
 .animation-container svg#elcos-sinotticoep {
   z-index: 10;
 }
+
+.animation-container #batt-a-container, .animation-container #batt-b-container {
+  z-index: 22;
+  position: relative;
+}
+
+.animation-container #cba-container, .animation-container #cbb-container {
+  z-index: 21;
+  position: relative;
+}
+
+.animation-container #rete-a-container, .animation-container #rete-b-container {
+  z-index: 20;
+  position: relative;
+}
+
