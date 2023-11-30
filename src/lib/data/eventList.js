@@ -175,7 +175,7 @@ export const eventList = {
     }]
   }, {
     "cea_smart": 'elcos-sinotticoreq_update',
-    "c_smart": "etnfMZoIJL21"
+    "c_smart": "eoFCxPg7VvY1"
   }],
   'SinotticoReqT': [{
     'REQT_NO': [{
@@ -372,7 +372,7 @@ export const eventList = {
     }],
   }, {
     "cea_smart": "",
-    "c_smart": 'eKGOZxr0Y1P1'
+    "c_smart": 'eKOpLcJ86uG1'
   }],
   "SinotticoEngineProt": [{
     "ENGINEPROT_ON": [{
