@@ -274,7 +274,7 @@ export const eventList = {
     }],
   }, {
     "cea_smart": "",
-    "c_smart": 'e1LApFgZYIe1'
+    "c_smart": 'etMIAGY9pkw1'
   }],
   "SinotticoCBA": [{
     "CB_ABS": [{
