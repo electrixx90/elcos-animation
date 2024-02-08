@@ -251,7 +251,7 @@ export default function ElcosAnimation({
 
     setIntervals(intv);
 
-  }, [JSON.stringify(events)]);
+  }, [events]);
 
   switch (sinotticoName) {
     case 'cea_smart':
