@@ -1,9 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import "./assets/css/style.css";
 import _ from "lodash";
 import CeaSmart from "./CeaSmart";
 import CSmart from "./CSmart";
 import {eventList} from "./data/eventList";
+
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  },[value]);
+  return ref.current || [];
+}
 
 /**
  *
@@ -39,6 +47,7 @@ export default function ElcosAnimation({
   const [engineProtPlayer, setEngineProtPlayer] = useState(null);
 
   const [intervals, setIntervals] = useState([]);
+  const prevEvents = usePrevious(events);
 
   const getSinotticoPartialId = (name) => eventList[name][1][sinotticoName] || "__null__"
 
@@ -227,6 +236,40 @@ export default function ElcosAnimation({
 
 
   useEffect(() => {
+    const evt = events.map(e => e[0]);
+    const pEvt = prevEvents.map(e => e[0]);
+
+    const diff = _.difference(pEvt, evt);
+
+    _.forEach(diff, d => {
+      const ii = intervals.find(i => i[0].startsWith(d));
+
+      if(typeof ii !== 'undefined') {
+        switch(d) {
+          case 'SinotticoAlarm': alarmPlayer.stop(); break;
+          case 'SinotticoEP': epPlayer.stop(); break;
+          case 'SinotticoMains': mainsPlayer.stop(); break;
+          case 'SinotticoMode': modePlayer.stop(); break;
+          case 'SinotticoMotor': motorPlayer.stop(); break;
+          case 'SinotticoPress': pressPlayer.stop(); break;
+          case 'SinotticoReq': reqPlayer.stop(); break;
+          case 'SinotticoReqT': reqTPlayer.stop(); break;
+          case 'SinotticoStatus': statusPlayer.stop(); break;
+          case 'SinotticoTraliccio': traliccioPlayer.stop(); break;
+          case 'SinotticoReteA': reteAPlayer.stop(); break;
+          case 'SinotticoReteB': reteBPlayer.stop(); break;
+          case 'SinotticoCBA': cbaPlayer.stop(); break;
+          case 'SinotticoCBB': cbbPlayer.stop(); break;
+          case 'SinotticoBattA': battAPlayer.stop(); break;
+          case 'SinotticoBattB': battBPlayer.stop(); break;
+          case 'SinotticoEngine': enginePlayer.stop(); break;
+          case 'SinotticoEngineProt': engineProtPlayer.stop(); break;
+        }
+
+        if (typeof ii[1] === 'number') clearInterval(ii[1]);
+      }
+    })
+
     let intv = [];
 
     processPlayerEvent(modePlayer, 'SinotticoMode', intv);

@@ -5,6 +5,7 @@ import _ from 'lodash';
 
 export default function TestButtons() {
     const [events, setEvents] = useState([]);
+    const [waitingEvents, setWaitingEvents] = useState([]);
     const [sinotticoName, setSinotticoName] = useState("cea_smart");
 
     const selectSinotticoName = useRef(null);
@@ -31,15 +32,15 @@ export default function TestButtons() {
     const manageEvents = (origin, value) => {
         var value = value.split(',');
 
-        let es = [...events];
+        let es = [...waitingEvents];
 
         _.remove(es, e => e[0] === origin);
 
-        if(value[0] !== '') {
+        if(value[0] !== '' && value[0] !== null) {
             es.push(value);
         }
 
-        setEvents(es);
+        setWaitingEvents(es);
     }
 
     useEffect(() => {
@@ -176,6 +177,10 @@ export default function TestButtons() {
                           REQT_KEY
                       </option>
                   </select>
+
+                  <div className="send-data-button-container">
+                      <button onClick={(e) => setEvents(waitingEvents)}>INVIA DATI</button>
+                  </div>
               </div>
 
               <div className={`test-buttons ${(sinotticoName !== 'cea_smart') ? "d-none" : null}`}>

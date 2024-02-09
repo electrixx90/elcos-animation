@@ -144,7 +144,7 @@ export const eventList = {
   }],
   'SinotticoStatus': [{
     'ANOM_NO': [{
-      fn: (p) => p.seekTo(0).pause(),
+      fn: (p) => p.seekTo(500).pause(),
       duration: null,
       loop: false
     }],
