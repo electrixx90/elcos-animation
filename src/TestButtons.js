@@ -28,6 +28,19 @@ export default function TestButtons() {
     const selectSinotticoBattB = useRef(null);
     const selectSinotticoEngine = useRef(null);
     const selectSinotticoEngineProt = useRef(null);
+
+    const selectSinotticoCEMAnomaly = useRef(null);
+    const selectSinotticoCEMClutch = useRef(null);
+    const selectSinotticoCEMEcu = useRef(null);
+    const selectSinotticoCEMEngine = useRef(null);
+    const selectSinotticoCEMEngineProt = useRef(null);
+    const selectSinotticoCEMGenerator = useRef(null);
+    const selectSinotticoCEMMode = useRef(null);
+    const selectSinotticoCEMPowerOut = useRef(null);
+    const selectSinotticoCEMPump = useRef(null);
+    const selectSinotticoCEMPumpProt = useRef(null);
+    const selectSinotticoCEMReq = useRef(null);
+    const selectSinotticoCEMReqT = useRef(null);
     
     const manageEvents = (origin, value) => {
         var value = value.split(',');
@@ -63,6 +76,18 @@ export default function TestButtons() {
         selectSinotticoBattB.current.value = null;
         selectSinotticoEngine.current.value = null;
         selectSinotticoEngineProt.current.value = null;
+        selectSinotticoCEMAnomaly.current.value = null;
+        selectSinotticoCEMClutch.current.value = null;
+        selectSinotticoCEMEcu.current.value = null;
+        selectSinotticoCEMEngine.current.value = null;
+        selectSinotticoCEMEngineProt.current.value = null;
+        selectSinotticoCEMGenerator.current.value = null;
+        selectSinotticoCEMMode.current.value = null;
+        selectSinotticoCEMPowerOut.current.value = null;
+        selectSinotticoCEMPump.current.value = null;
+        selectSinotticoCEMPumpProt.current.value = null;
+        selectSinotticoCEMReq.current.value = null;
+        selectSinotticoCEMReqT.current.value = null;
     }, [sinotticoName]);
 
     return (
@@ -72,13 +97,14 @@ export default function TestButtons() {
               <select ref={selectSinotticoName} onChange={(e) => setSinotticoName(e.currentTarget.value)}>
                   <option defaultChecked={true} value="cea_smart">CEA-SMART</option>
                   <option value="c_smart">C-SMART</option>
+                  <option value="cem_139">CEM 139</option>
               </select>
           </div>
 
           <div className="separator"></div>
 
           <div className="test-container">
-              <div className="test-buttons">
+              <div className={`test-buttons ${(sinotticoName === 'cem_139') ? "d-none" : null}`}>
                   <p>SinotticoMode</p>
                   <select ref={selectSinotticoMode} onChange={(e) => manageEvents("SinotticoMode", e.currentTarget.value)}>
                       <option value={null}></option>
@@ -295,8 +321,128 @@ export default function TestButtons() {
                   </select>
               </div>
 
+              <div className={`test-buttons ${(sinotticoName !== 'cem_139') ? "d-none" : null}`}>
+                  <p>SinotticoAnomaly</p>
+                  <select ref={selectSinotticoCEMAnomaly}
+                          onChange={e => manageEvents("SinotticoCEMAnomaly", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoCEMAnomaly,ANOM_NO">ANOM_NO</option>
+                      <option value="SinotticoCEMAnomaly,ANOM_AMBER">ANOM_AMBER</option>
+                      <option value="SinotticoCEMAnomaly,ANOM_RED">ANOM_RED</option>
+                      <option value="SinotticoCEMAnomaly,ANOM_AMBERRED">ANOM_AMBERRED</option>
+                  </select>
+
+                  <p>SinotticoClutch</p>
+                  <select ref={selectSinotticoCEMClutch}
+                          onChange={e => manageEvents("SinotticoCEMClutch", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoCEMClutch,CLUTCH_OFF">CLUTCH_OFF</option>
+                      <option value="SinotticoCEMClutch,CLUTCH_ON">CLUTCH_ON</option>
+                      <option value="SinotticoCEMClutch,CLUTCH_ABS">CLUTCH_ABS</option>
+                  </select>
+
+                  <p>SinotticoEcu</p>
+                  <select ref={selectSinotticoCEMEcu}
+                          onChange={e => manageEvents("SinotticoCEMEcu", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoCEMEcu,ECU_ABS">ECU_ABS</option>
+                      <option value="SinotticoCEMEcu,ECU_OK">ECU_OK</option>
+                      <option value="SinotticoCEMEcu,ECU_AMBER">ECU_AMBER</option>
+                      <option value="SinotticoCEMEcu,ECU_RED">ECU_RED</option>
+                      <option value="SinotticoCEMEcu,ECU_AMBERRED">ECU_AMBERRED</option>
+                  </select>
+
+                  <p>SinotticoEngine</p>
+                  <select ref={selectSinotticoCEMEngine}
+                          onChange={e => manageEvents("SinotticoCEMEngine", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoCEMEngine,ENGINE_OFF">ENGINE_OFF</option>
+                      <option value="SinotticoCEMEngine,ENGINE_ON">ENGINE_ON</option>
+                      <option value="SinotticoCEMEngine,ENGINE_COOLING">ENGINE_COOLING</option>
+                      <option value="SinotticoCEMEngine,ENGINE_WARMING">ENGINE_WARMING</option>
+                  </select>
+
+                  <p>SinotticoEngineProt</p>
+                  <select ref={selectSinotticoCEMEngineProt}
+                          onChange={e => manageEvents("SinotticoCEMEngineProt", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoCEMEngineProt,ENGINEPROT_OFF">ENGINEPROT_OFF</option>
+                      <option value="SinotticoCEMEngineProt,ENGINEPROT_ON">ENGINEPROT_ON</option>
+                  </select>
+
+                  <p>SinotticoGenerator</p>
+                  <select ref={selectSinotticoCEMGenerator}
+                          onChange={e => manageEvents("SinotticoCEMGenerator", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoCEMGenerator,GENERATOR_OFF">GENERATOR_OFF</option>
+                      <option value="SinotticoCEMGenerator,GENERATOR_ON">GENERATOR_ON</option>
+                      <option value="SinotticoCEMGenerator,GENERATOR_OK">GENERATOR_OK</option>
+                      <option value="SinotticoCEMGenerator,GENERATOR_WARNING">GENERATOR_WARNING</option>
+                      <option value="SinotticoCEMGenerator,GENERATOR_EXCL">GENERATOR_EXCL</option>
+                  </select>
+
+                  <p>SinotticoMode</p>
+                  <select ref={selectSinotticoCEMMode}
+                          onChange={e => manageEvents("SinotticoCEMMode", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoCEMMode,MODE_OFF">MODE_OFF</option>
+                      <option value="SinotticoCEMMode,MODE_MAN">MODE_MAN</option>
+                      <option value="SinotticoCEMMode,MODE_AUT">MODE_AUT</option>
+                  </select>
+
+                  <p>SinotticoPowerOut</p>
+                  <select ref={selectSinotticoCEMPowerOut}
+                          onChange={e => manageEvents("SinotticoCEMPowerOut", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoCEMPowerOut,POWEROUT_OFF">POWEROUT_OFF</option>
+                      <option value="SinotticoCEMPowerOut,POWEROUT_ON">POWEROUT_ON</option>
+                      <option value="SinotticoCEMPowerOut,POWEROUT_ABS">POWEROUT_ABS</option>
+                      <option value="SinotticoCEMPowerOut,POWEROUT_EXCL">POWEROUT_EXCL</option>
+                  </select>
+
+                  <p>SinotticoPump</p>
+                  <select ref={selectSinotticoCEMPump}
+                          onChange={e => manageEvents("SinotticoCEMPump", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoCEMPump,PUMP_OFF">PUMP_OFF</option>
+                      <option value="SinotticoCEMPump,PUMP_ON">PUMP_ON</option>
+                  </select>
+
+                  <p>SinotticoPumpProt</p>
+                  <select ref={selectSinotticoCEMPumpProt}
+                          onChange={e => manageEvents("SinotticoCEMPumpProt", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoCEMPumpProt,PUMPPROT_OFF">PUMPPROT_OFF</option>
+                      <option value="SinotticoCEMPumpProt,PUMPPROT_ON">PUMPPROT_ON</option>
+                      <option value="SinotticoCEMPumpProt,PUMPPROT_EXCL">PUMPPROT_EXCL</option>
+                  </select>
+
+                  <p>SinotticoReq</p>
+                  <select ref={selectSinotticoCEMReq}
+                          onChange={e => manageEvents("SinotticoCEMReq", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoCEMReq,REQ_NO">REQ_NO</option>
+                      <option value="SinotticoCEMReq,REQ_START">REQ_START</option>
+                      <option value="SinotticoCEMReq,REQ_STOP">REQ_STOP</option>
+                  </select>
+
+                  <p>SinotticoReqT</p>
+                  <select ref={selectSinotticoCEMReqT}
+                          onChange={e => manageEvents("SinotticoCEMReqT", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoCEMReqT,REQT_NO">REQT_NO</option>
+                      <option value="SinotticoCEMReqT,REQT_KEY">REQT_KEY</option>
+                      <option value="SinotticoCEMReqT,REQT_INCALL">REQT_INCALL</option>
+                      <option value="SinotticoCEMReqT,REQT_TIMER">REQT_TIMER</option>
+                  </select>
+
+                  <div className="send-data-button-container">
+                      <button onClick={(e) => setEvents(waitingEvents)}>INVIA DATI</button>
+                  </div>
+              </div>
+
               <div className="test-animation">
-                  <ElcosAnimation events={events} sinotticoName={sinotticoName} />
+                  <ElcosAnimation events={events} sinotticoName={sinotticoName}/>
               </div>
           </div>
       </>

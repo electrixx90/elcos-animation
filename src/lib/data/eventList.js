@@ -388,5 +388,290 @@ export const eventList = {
   }, {
     "cea_smart": "",
     "c_smart": 'eMPUc60ars41'
-  }]
+  }],
+
+
+  "SinotticoCEMAnomaly": [{
+    "ANOM_NO": [{
+      fn: (p) => p.seekTo(1000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "ANOM_AMBER": [{
+      fn: (p) => p.seekTo(3000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "ANOM_RED": [{
+      fn: (p) => p.seekTo(2000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "ANOM_AMBERRED": [{
+      fn: (p) => p.seekTo(4000).pause(),
+      duration: null,
+      loop: false
+    }]
+  }, {
+    "cea_smart": "",
+    "c_smart": "",
+    "cem_139": "e03iONd5UfW1"
+  }],
+  "SinotticoCEMClutch": [{
+    "CLUTCH_OFF": [{
+      fn: (p) => p.seekTo(1000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "CLUTCH_ON": [{
+      fn: (p) => p.seekTo(2000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "CLUTCH_ABS": [{
+      fn: (p) => p.seekTo(3000).pause(),
+      duration: null,
+      loop: false
+    }]
+  }, {
+    "cea_smart": "",
+    "c_smart": "",
+    "cem_139": "eRZtdo9jQzs1"
+  }],
+  "SinotticoCEMEcu": [{
+    "ECU_ABS": [{
+      fn: (p) => p.seekTo(0).pause(),
+      duration: null,
+      loop: false
+    }],
+    "ECU_OK": [{
+      fn: (p) => p.seekTo(1000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "ECU_AMBER": [{
+      fn: (p) => p.seekTo(2000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "ECU_RED": [{
+      fn: (p) => p.seekTo(3000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "ECU_AMBERRED": [{
+      fn: (p) => p.seekTo(4000).pause(),
+      duration: null,
+      loop: false
+    }],
+
+  }, {
+    "cea_smart": "",
+    "c_smart": "",
+    "cem_139": "eMIQwzAlJC01"
+  }],
+  "SinotticoCEMEngine": [{
+    "ENGINE_OFF": [{
+      fn: (p) => p.seekTo(1000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "ENGINE_ON": [{
+      fn: (p) => p.seekTo(2000).play(),
+      duration: 1000,
+      loop: true
+    }],
+    "ENGINE_COOLING": [{
+     fn: (p) => p.seekTo(4000).play(),
+      duration: 1000,
+      loop: true
+    }],
+    "ENGINE_WARMING": [{
+      fn: (p) => p.seekTo(6000).play(),
+      duration: 1000,
+      loop: true
+    }]
+  }, {
+    "cea_smart": "",
+    "c_smart": "",
+    "cem_139": "et4JpGRIify1"
+  }],
+  "SinotticoCEMEngineProt": [{
+    "ENGINEPROT_OFF": [{
+      fn: (p) => p.seekTo(1000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "ENGINEPROT_ON": [{
+      fn: (p) => p.seekTo(2000).pause(),
+      duration: null,
+      loop: false
+    }]
+  }, {
+    "cea_smart": "",
+    "c_smart": "",
+    "cem_139": "eA36RJzextp1"
+  }],
+  "SinotticoCEMGenerator": [{
+    "GENERATOR_OFF": [{
+      fn: (p) => p.seekTo(1000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "GENERATOR_ON": [{
+      fn: (p) => p.seekTo(2000).play(),
+      duration: 1000,
+      loop: true
+    }],
+    "GENERATOR_OK": [{
+      fn: (p) => p.seekTo(2000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "GENERATOR_WARNING": [{
+      fn: (p) => p.seekTo(5000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "GENERATOR_EXCL": [{
+      fn: (p) => p.seekTo(0).pause(),
+      duration: null,
+      loop: false
+    }]
+  }, {
+    "cea_smart": "",
+    "c_smart": "",
+    "cem_139": "egpRS4wC1PL1"
+  }],
+  "SinotticoCEMMode": [{
+    "MODE_OFF": [{
+      fn: (p) => p.seekTo(1000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "MODE_MAN": [{
+      fn: (p) => p.seekTo(2000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "MODE_AUT": [{
+      fn: (p) => p.seekTo(3000).pause(),
+      duration: null,
+      loop: false
+    }]
+  }, {
+    "cea_smart": "",
+    "c_smart": "",
+    "cem_139": "eYHoAl7DTJd1"
+  }],
+  "SinotticoCEMPowerOut": [{
+    "POWEROUT_OFF": [{
+      fn: (p) => p.seekTo(2000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "POWEROUT_ON": [{
+      fn: (p) => p.seekTo(1000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "POWEROUT_ABS": [{
+      fn: (p) => p.seekTo(3000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "POWEROUT_EXCL": [{
+      fn: (p) => p.seekTo(0).pause(),
+      duration: null,
+      loop: false
+    }]
+  }, {
+    "cea_smart": "",
+    "c_smart": "",
+    "cem_139": "e3QDNpqECFe1"
+  }],
+  "SinotticoCEMPump": [{
+    "PUMP_OFF": [{
+      fn: (p) => p.seekTo(1000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "PUMP_ON": [{
+      fn: (p) => p.seekTo(2000).play(),
+      duration: 2000,
+      loop: true
+    }]
+  }, {
+    "cea_smart": "",
+    "c_smart": "",
+    "cem_139": "eQRXoy7Zzfv1"
+  }],
+  "SinotticoCEMPumpProt": [{
+    "PUMPPROT_OFF": [{
+      fn: (p) => p.seekTo(0).pause(),
+      duration: null,
+      loop: false
+    }],
+    "PUMPPROT_ON": [{
+      fn: (p) => p.seekTo(1000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "PUMPPROT_EXCL": [{
+      fn: (p) => p.seekTo(2000).pause(),
+      duration: null,
+      loop: false
+    }]
+  }, {
+    "cea_smart": "",
+    "c_smart": "",
+    "cem_139": "e3RBhsteZJF1"
+  }],
+  "SinotticoCEMReq": [{
+    "REQ_NO": [{
+      fn: (p) => p.seekTo(0).pause(),
+      duration: null,
+      loop: false
+    }],
+    "REQ_START": [{
+      fn: (p) => p.seekTo(1000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "REQ_STOP": [{
+      fn: (p) => p.seekTo(2000).pause(),
+      duration: null,
+      loop: false
+    }]
+  }, {
+    "cea_smart": "",
+    "c_smart": "",
+    "cem_139": "eucP2YWaDpv1"
+  }],
+  "SinotticoCEMReqT": [{
+    "REQT_NO": [{
+      fn: (p) => p.seekTo(0).pause(),
+      duration: null,
+      loop: false
+    }],
+    "REQT_KEY": [{
+      fn: (p) => p.seekTo(1000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "REQT_INCALL": [{
+      fn: (p) => p.seekTo(2000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "REQT_TIMER": [{
+      fn: (p) => p.seekTo(3000).pause(),
+      duration: null,
+      loop: false
+    }]
+  }, {
+    "cea_smart": "",
+    "c_smart": "",
+    "cem_139": "exbg5vhnFQ81"
+  }],
 }

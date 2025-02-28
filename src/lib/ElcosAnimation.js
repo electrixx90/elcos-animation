@@ -4,6 +4,7 @@ import _ from "lodash";
 import CeaSmart from "./CeaSmart";
 import CSmart from "./CSmart";
 import {eventList} from "./data/eventList";
+import Cem139 from "./Cem139";
 
 function usePrevious(value) {
   const ref = useRef();
@@ -45,6 +46,19 @@ export default function ElcosAnimation({
   const [battBPlayer, setBattBPlayer] = useState(null);
   const [enginePlayer, setEnginePlayer] = useState(null);
   const [engineProtPlayer, setEngineProtPlayer] = useState(null);
+  const [cemAnomalyPlayer, setCemAnomalyPlayer] = useState(null);
+  const [cemClutchPlayer, setCemClutchPlayer] = useState(null);
+  const [cemEcuPlayer, setCemEcuPlayer] = useState(null);
+  const [cemEnginePlayer, setCemEnginePlayer] = useState(null);
+  const [cemEngineProtPlayer, setCemEngineProtPlayer] = useState(null);
+  const [cemGeneratorPlayer, setCemGeneratorPlayer] = useState(null);
+  const [cemModePlayer, setCemModePlayer] = useState(null);
+  const [cemPowerOutPlayer, setCemPowerOutPlayer] = useState(null);
+  const [cemPumpPlayer, setCemPumpPlayer] = useState(null);
+  const [cemPumpProtPlayer, setCemPumpProtPlayer] = useState(null);
+  const [cemReqPlayer, setCemReqPlayer] = useState(null);
+  const [cemReqTPlayer, setCemReqTPlayer] = useState(null);
+  
 
   const [intervals, setIntervals] = useState([]);
   const prevEvents = usePrevious(events);
@@ -71,6 +85,19 @@ export default function ElcosAnimation({
     const sBattB = document.getElementById(getSinotticoPartialId('SinotticoBattB'));
     const sEngine = document.getElementById(getSinotticoPartialId('SinotticoEngine'));
     const sEngineProt = document.getElementById(getSinotticoPartialId('SinotticoEngineProt'));
+    
+    const cemAnomaly = document.getElementById(getSinotticoPartialId('SinotticoCEMAnomaly'));
+    const cemClutch = document.getElementById(getSinotticoPartialId('SinotticoCEMClutch'));
+    const cemEcu = document.getElementById(getSinotticoPartialId('SinotticoCEMEcu'));
+    const cemEngine = document.getElementById(getSinotticoPartialId('SinotticoCEMEngine'));
+    const cemEngineProt = document.getElementById(getSinotticoPartialId('SinotticoCEMEngineProt'));
+    const cemGenerator = document.getElementById(getSinotticoPartialId('SinotticoCEMGenerator'));
+    const cemMode = document.getElementById(getSinotticoPartialId('SinotticoCEMMode'));
+    const cemPowerOut = document.getElementById(getSinotticoPartialId('SinotticoCEMPowerOut'));
+    const cemPump = document.getElementById(getSinotticoPartialId('SinotticoCEMPump'));
+    const cemPumpProt = document.getElementById(getSinotticoPartialId('SinotticoCEMPumpProt'));
+    const cemReq = document.getElementById(getSinotticoPartialId('SinotticoCEMReq'));
+    const cemReqT = document.getElementById(getSinotticoPartialId('SinotticoCEMReqT'));
 
     if (sAlarm) {
       sAlarm.svgatorPlayer.stop();
@@ -197,6 +224,90 @@ export default function ElcosAnimation({
     } else {
       setEngineProtPlayer(null);
     }
+    
+    if (cemAnomaly) {
+      cemAnomaly.svgatorPlayer.stop();
+      setCemAnomalyPlayer(cemAnomaly.svgatorPlayer);
+    } else {
+      setCemAnomalyPlayer(null);
+    }
+    
+    if (cemClutch) {
+      cemClutch.svgatorPlayer.stop();
+      setCemClutchPlayer(cemClutch.svgatorPlayer);
+    } else {
+      setCemClutchPlayer(null);
+    }
+    
+    if (cemEcu) {
+      cemEcu.svgatorPlayer.stop();
+      setCemEcuPlayer(cemEcu.svgatorPlayer);
+    } else {
+      setCemEcuPlayer(null);
+    }
+    
+    if (cemEngine) {
+      cemEngine.svgatorPlayer.stop();
+      setCemEnginePlayer(cemEngine.svgatorPlayer);
+    } else {
+      setCemEnginePlayer(null);
+    }
+    
+    if (cemEngineProt) {
+      cemEngineProt.svgatorPlayer.stop();
+      setCemEngineProtPlayer(cemEngineProt.svgatorPlayer);
+    } else {
+      setCemEngineProtPlayer(null);
+    }
+    
+    if (cemGenerator) {
+      cemGenerator.svgatorPlayer.stop();
+      setCemGeneratorPlayer(cemGenerator.svgatorPlayer);
+    } else {
+      setCemGeneratorPlayer(null);
+    }
+
+    if (cemMode) {
+      cemMode.svgatorPlayer.stop();
+      setCemModePlayer(cemMode.svgatorPlayer);
+    } else {
+      setCemModePlayer(null);
+    }
+
+    if (cemPowerOut) {
+      cemPowerOut.svgatorPlayer.stop();
+      setCemPowerOutPlayer(cemPowerOut.svgatorPlayer);
+    } else {
+      setCemPowerOutPlayer(null);
+    }
+
+    if (cemPump) {
+      cemPump.svgatorPlayer.stop();
+      setCemPumpPlayer(cemPump.svgatorPlayer);
+    } else {
+      setCemPumpPlayer(null);
+    }
+
+    if (cemPumpProt) {
+      cemPumpProt.svgatorPlayer.stop();
+      setCemPumpProtPlayer(cemPumpProt.svgatorPlayer);
+    } else {
+      setCemPumpProtPlayer(null);
+    }
+
+    if (cemReq) {
+      cemReq.svgatorPlayer.stop();
+      setCemReqPlayer(cemReq.svgatorPlayer);
+    } else {
+      setCemReqPlayer(null);
+    }
+
+    if (cemReqT) {
+      cemReqT.svgatorPlayer.stop();
+      setCemReqTPlayer(cemReqT.svgatorPlayer);
+    } else {
+      setCemReqTPlayer(null);
+    }
 
     setIntervals([]);
   }, [sinotticoName]);
@@ -264,6 +375,18 @@ export default function ElcosAnimation({
           case 'SinotticoBattB': battBPlayer.stop(); break;
           case 'SinotticoEngine': enginePlayer.stop(); break;
           case 'SinotticoEngineProt': engineProtPlayer.stop(); break;
+          case 'SinotticoCEMAnomaly': cemAnomalyPlayer.stop(); break;
+          case 'SinotticoCEMClutch': cemClutchPlayer.stop(); break;
+          case 'SinotticoCEMEcu': cemEcuPlayer.stop(); break;
+          case 'SinotticoCEMEngine': cemEnginePlayer.stop(); break;
+          case 'SinotticoCEMEngineProt': cemEngineProtPlayer.stop(); break;
+          case 'SinotticoCEMGenerator': cemGeneratorPlayer.stop(); break;
+          case 'SinotticoCEMMode': cemModePlayer.stop(); break;
+          case 'SinotticoCEMPowerOut': cemPowerOutPlayer.stop(); break;
+          case 'SinotticoCEMPump': cemPumpPlayer.stop(); break;
+          case 'SinotticoCEMPumpProt': cemPumpProtPlayer.stop(); break;
+          case 'SinotticoCEMReq': cemReqPlayer.stop(); break;
+          case 'SinotticoCEMReqT': cemReqTPlayer.stop(); break;
         }
 
         if (typeof ii[1] === 'number') clearInterval(ii[1]);
@@ -292,6 +415,19 @@ export default function ElcosAnimation({
     processPlayerEvent(enginePlayer, 'SinotticoEngine', intv);
     processPlayerEvent(engineProtPlayer, 'SinotticoEngineProt', intv);
 
+    processPlayerEvent(cemAnomalyPlayer, 'SinotticoCEMAnomaly', intv);
+    processPlayerEvent(cemClutchPlayer, 'SinotticoCEMClutch', intv);
+    processPlayerEvent(cemEcuPlayer, 'SinotticoCEMEcu', intv);
+    processPlayerEvent(cemEnginePlayer, 'SinotticoCEMEngine', intv);
+    processPlayerEvent(cemEngineProtPlayer, 'SinotticoCEMEngineProt', intv);
+    processPlayerEvent(cemGeneratorPlayer, 'SinotticoCEMGenerator', intv);
+    processPlayerEvent(cemModePlayer, 'SinotticoCEMMode', intv);
+    processPlayerEvent(cemPowerOutPlayer, 'SinotticoCEMPowerOut', intv);
+    processPlayerEvent(cemPumpPlayer, 'SinotticoCEMPump', intv);
+    processPlayerEvent(cemPumpProtPlayer, 'SinotticoCEMPumpProt', intv);
+    processPlayerEvent(cemReqPlayer, 'SinotticoCEMReq', intv);
+    processPlayerEvent(cemReqTPlayer, 'SinotticoCEMReqT', intv);
+
     setIntervals(intv);
 
   }, [events]);
@@ -302,5 +438,8 @@ export default function ElcosAnimation({
 
     case 'c_smart':
       return (<CSmart sinotticoName={sinotticoName} />);
+
+    case 'cem_139':
+      return (<Cem139 sinotticoName={sinotticoName} />);
   }
 }
