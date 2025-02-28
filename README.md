@@ -40,4 +40,4 @@ La proprietà `events` conterrà un array di eventi, ciascuno costituito da una 
 ]
 ```
 
-La proprietà `sinotticoName` conterrà una stringa per richiamare la tipologia di centralina ovvero `cea_smart` oppure `c_smart`.
+La proprietà `sinotticoName` conterrà una stringa per richiamare la tipologia di centralina ovvero `cea_smart`, `c_smart`, `cem_139`.
