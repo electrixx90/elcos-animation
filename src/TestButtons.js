@@ -434,6 +434,7 @@ export default function TestButtons() {
                       <option value="SinotticoCEMReqT,REQT_KEY">REQT_KEY</option>
                       <option value="SinotticoCEMReqT,REQT_INCALL">REQT_INCALL</option>
                       <option value="SinotticoCEMReqT,REQT_TIMER">REQT_TIMER</option>
+                      <option value="SinotticoCEMReqT,REQT_REMOTE">REQT_REMOTE</option>
                   </select>
 
                   <div className="send-data-button-container">

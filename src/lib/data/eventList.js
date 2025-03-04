@@ -436,7 +436,7 @@ export const eventList = {
   }, {
     "cea_smart": "",
     "c_smart": "",
-    "cem_139": "eRZtdo9jQzs1"
+    "cem_139": "exAoULm4ThJ1"
   }],
   "SinotticoCEMEcu": [{
     "ECU_ABS": [{
@@ -524,7 +524,7 @@ export const eventList = {
       loop: true
     }],
     "GENERATOR_OK": [{
-      fn: (p) => p.seekTo(2000).pause(),
+      fn: (p) => p.seekTo(3000).pause(),
       duration: null,
       loop: false
     }],
@@ -666,6 +666,11 @@ export const eventList = {
     }],
     "REQT_TIMER": [{
       fn: (p) => p.seekTo(3000).pause(),
+      duration: null,
+      loop: false
+    }],
+    "REQT_REMOTE": [{
+      fn: (p) => p.seekTo(4000).pause(),
       duration: null,
       loop: false
     }]
