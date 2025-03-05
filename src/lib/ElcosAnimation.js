@@ -3,7 +3,8 @@ import "./assets/css/style.css";
 import _ from "lodash";
 import CeaSmart from "./CeaSmart";
 import CSmart from "./CSmart";
-import {eventList} from "./data/eventList";
+import {cem_eventList} from "./data/cem_eventList";
+import {c_cea_eventList} from "./data/c_cea_eventList";
 import Cem139 from "./Cem139";
 
 function usePrevious(value) {
@@ -58,12 +59,14 @@ export default function ElcosAnimation({
   const [cemPumpProtPlayer, setCemPumpProtPlayer] = useState(null);
   const [cemReqPlayer, setCemReqPlayer] = useState(null);
   const [cemReqTPlayer, setCemReqTPlayer] = useState(null);
+
+  const eventList = (sinotticoName === 'cem_139') ? cem_eventList : c_cea_eventList;
   
 
   const [intervals, setIntervals] = useState([]);
   const prevEvents = usePrevious(events);
 
-  const getSinotticoPartialId = (name) => eventList[name][1][sinotticoName] || "__null__"
+  const getSinotticoPartialId = (name) => eventList?.[name]?.[1][sinotticoName] || "__null__"
 
   useEffect(() => {
     const sAlarm = document.getElementById(getSinotticoPartialId('SinotticoAlarm'));
@@ -86,18 +89,18 @@ export default function ElcosAnimation({
     const sEngine = document.getElementById(getSinotticoPartialId('SinotticoEngine'));
     const sEngineProt = document.getElementById(getSinotticoPartialId('SinotticoEngineProt'));
     
-    const cemAnomaly = document.getElementById(getSinotticoPartialId('SinotticoCEMAnomaly'));
-    const cemClutch = document.getElementById(getSinotticoPartialId('SinotticoCEMClutch'));
-    const cemEcu = document.getElementById(getSinotticoPartialId('SinotticoCEMEcu'));
-    const cemEngine = document.getElementById(getSinotticoPartialId('SinotticoCEMEngine'));
-    const cemEngineProt = document.getElementById(getSinotticoPartialId('SinotticoCEMEngineProt'));
-    const cemGenerator = document.getElementById(getSinotticoPartialId('SinotticoCEMGenerator'));
-    const cemMode = document.getElementById(getSinotticoPartialId('SinotticoCEMMode'));
-    const cemPowerOut = document.getElementById(getSinotticoPartialId('SinotticoCEMPowerOut'));
-    const cemPump = document.getElementById(getSinotticoPartialId('SinotticoCEMPump'));
-    const cemPumpProt = document.getElementById(getSinotticoPartialId('SinotticoCEMPumpProt'));
-    const cemReq = document.getElementById(getSinotticoPartialId('SinotticoCEMReq'));
-    const cemReqT = document.getElementById(getSinotticoPartialId('SinotticoCEMReqT'));
+    const cemAnomaly = document.getElementById(getSinotticoPartialId('SinotticoAnomaly'));
+    const cemClutch = document.getElementById(getSinotticoPartialId('SinotticoClutch'));
+    const cemEcu = document.getElementById(getSinotticoPartialId('SinotticoEcu'));
+    const cemEngine = document.getElementById(getSinotticoPartialId('SinotticoEngine'));
+    const cemEngineProt = document.getElementById(getSinotticoPartialId('SinotticoEngineProt'));
+    const cemGenerator = document.getElementById(getSinotticoPartialId('SinotticoGenerator'));
+    const cemMode = document.getElementById(getSinotticoPartialId('SinotticoMode'));
+    const cemPowerOut = document.getElementById(getSinotticoPartialId('SinotticoPowerOut'));
+    const cemPump = document.getElementById(getSinotticoPartialId('SinotticoPump'));
+    const cemPumpProt = document.getElementById(getSinotticoPartialId('SinotticoPumpProt'));
+    const cemReq = document.getElementById(getSinotticoPartialId('SinotticoReq'));
+    const cemReqT = document.getElementById(getSinotticoPartialId('SinotticoReqT'));
 
     if (sAlarm) {
       sAlarm.svgatorPlayer.stop();
@@ -356,37 +359,42 @@ export default function ElcosAnimation({
       const ii = intervals.find(i => i[0].startsWith(d));
 
       if(typeof ii !== 'undefined') {
-        switch(d) {
-          case 'SinotticoAlarm': alarmPlayer.stop(); break;
-          case 'SinotticoEP': epPlayer.stop(); break;
-          case 'SinotticoMains': mainsPlayer.stop(); break;
-          case 'SinotticoMode': modePlayer.stop(); break;
-          case 'SinotticoMotor': motorPlayer.stop(); break;
-          case 'SinotticoPress': pressPlayer.stop(); break;
-          case 'SinotticoReq': reqPlayer.stop(); break;
-          case 'SinotticoReqT': reqTPlayer.stop(); break;
-          case 'SinotticoStatus': statusPlayer.stop(); break;
-          case 'SinotticoTraliccio': traliccioPlayer.stop(); break;
-          case 'SinotticoReteA': reteAPlayer.stop(); break;
-          case 'SinotticoReteB': reteBPlayer.stop(); break;
-          case 'SinotticoCBA': cbaPlayer.stop(); break;
-          case 'SinotticoCBB': cbbPlayer.stop(); break;
-          case 'SinotticoBattA': battAPlayer.stop(); break;
-          case 'SinotticoBattB': battBPlayer.stop(); break;
-          case 'SinotticoEngine': enginePlayer.stop(); break;
-          case 'SinotticoEngineProt': engineProtPlayer.stop(); break;
-          case 'SinotticoCEMAnomaly': cemAnomalyPlayer.stop(); break;
-          case 'SinotticoCEMClutch': cemClutchPlayer.stop(); break;
-          case 'SinotticoCEMEcu': cemEcuPlayer.stop(); break;
-          case 'SinotticoCEMEngine': cemEnginePlayer.stop(); break;
-          case 'SinotticoCEMEngineProt': cemEngineProtPlayer.stop(); break;
-          case 'SinotticoCEMGenerator': cemGeneratorPlayer.stop(); break;
-          case 'SinotticoCEMMode': cemModePlayer.stop(); break;
-          case 'SinotticoCEMPowerOut': cemPowerOutPlayer.stop(); break;
-          case 'SinotticoCEMPump': cemPumpPlayer.stop(); break;
-          case 'SinotticoCEMPumpProt': cemPumpProtPlayer.stop(); break;
-          case 'SinotticoCEMReq': cemReqPlayer.stop(); break;
-          case 'SinotticoCEMReqT': cemReqTPlayer.stop(); break;
+        if(sinotticoName === 'cem_139') {
+          switch (d) {
+            case 'SinotticoAnomaly': cemAnomalyPlayer.stop(); break;
+            case 'SinotticoClutch': cemClutchPlayer.stop(); break;
+            case 'SinotticoEcu': cemEcuPlayer.stop(); break;
+            case 'SinotticoEngine': cemEnginePlayer.stop(); break;
+            case 'SinotticoEngineProt': cemEngineProtPlayer.stop(); break;
+            case 'SinotticoGenerator': cemGeneratorPlayer.stop(); break;
+            case 'SinotticoMode': cemModePlayer.stop(); break;
+            case 'SinotticoPowerOut': cemPowerOutPlayer.stop(); break;
+            case 'SinotticoPump': cemPumpPlayer.stop(); break;
+            case 'SinotticoPumpProt': cemPumpProtPlayer.stop(); break;
+            case 'SinotticoReq': cemReqPlayer.stop(); break;
+            case 'SinotticoReqT': cemReqTPlayer.stop(); break;
+          }
+        } else {
+          switch(d) {
+            case 'SinotticoAlarm': alarmPlayer.stop(); break;
+            case 'SinotticoEP': epPlayer.stop(); break;
+            case 'SinotticoMains': mainsPlayer.stop(); break;
+            case 'SinotticoMode': modePlayer.stop(); break;
+            case 'SinotticoMotor': motorPlayer.stop(); break;
+            case 'SinotticoPress': pressPlayer.stop(); break;
+            case 'SinotticoReq': reqPlayer.stop(); break;
+            case 'SinotticoReqT': reqTPlayer.stop(); break;
+            case 'SinotticoStatus': statusPlayer.stop(); break;
+            case 'SinotticoTraliccio': traliccioPlayer.stop(); break;
+            case 'SinotticoReteA': reteAPlayer.stop(); break;
+            case 'SinotticoReteB': reteBPlayer.stop(); break;
+            case 'SinotticoCBA': cbaPlayer.stop(); break;
+            case 'SinotticoCBB': cbbPlayer.stop(); break;
+            case 'SinotticoBattA': battAPlayer.stop(); break;
+            case 'SinotticoBattB': battBPlayer.stop(); break;
+            case 'SinotticoEngine': enginePlayer.stop(); break;
+            case 'SinotticoEngineProt': engineProtPlayer.stop(); break;
+          }
         }
 
         if (typeof ii[1] === 'number') clearInterval(ii[1]);
@@ -415,18 +423,18 @@ export default function ElcosAnimation({
     processPlayerEvent(enginePlayer, 'SinotticoEngine', intv);
     processPlayerEvent(engineProtPlayer, 'SinotticoEngineProt', intv);
 
-    processPlayerEvent(cemAnomalyPlayer, 'SinotticoCEMAnomaly', intv);
-    processPlayerEvent(cemClutchPlayer, 'SinotticoCEMClutch', intv);
-    processPlayerEvent(cemEcuPlayer, 'SinotticoCEMEcu', intv);
-    processPlayerEvent(cemEnginePlayer, 'SinotticoCEMEngine', intv);
-    processPlayerEvent(cemEngineProtPlayer, 'SinotticoCEMEngineProt', intv);
-    processPlayerEvent(cemGeneratorPlayer, 'SinotticoCEMGenerator', intv);
-    processPlayerEvent(cemModePlayer, 'SinotticoCEMMode', intv);
-    processPlayerEvent(cemPowerOutPlayer, 'SinotticoCEMPowerOut', intv);
-    processPlayerEvent(cemPumpPlayer, 'SinotticoCEMPump', intv);
-    processPlayerEvent(cemPumpProtPlayer, 'SinotticoCEMPumpProt', intv);
-    processPlayerEvent(cemReqPlayer, 'SinotticoCEMReq', intv);
-    processPlayerEvent(cemReqTPlayer, 'SinotticoCEMReqT', intv);
+    processPlayerEvent(cemAnomalyPlayer, 'SinotticoAnomaly', intv);
+    processPlayerEvent(cemClutchPlayer, 'SinotticoClutch', intv);
+    processPlayerEvent(cemEcuPlayer, 'SinotticoEcu', intv);
+    processPlayerEvent(cemEnginePlayer, 'SinotticoEngine', intv);
+    processPlayerEvent(cemEngineProtPlayer, 'SinotticoEngineProt', intv);
+    processPlayerEvent(cemGeneratorPlayer, 'SinotticoGenerator', intv);
+    processPlayerEvent(cemModePlayer, 'SinotticoMode', intv);
+    processPlayerEvent(cemPowerOutPlayer, 'SinotticoPowerOut', intv);
+    processPlayerEvent(cemPumpPlayer, 'SinotticoPump', intv);
+    processPlayerEvent(cemPumpProtPlayer, 'SinotticoPumpProt', intv);
+    processPlayerEvent(cemReqPlayer, 'SinotticoReq', intv);
+    processPlayerEvent(cemReqTPlayer, 'SinotticoReqT', intv);
 
     setIntervals(intv);
 

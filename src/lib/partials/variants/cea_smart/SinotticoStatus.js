@@ -25,6 +25,6 @@ export function SinotticoStatus() {
   }, []);
 
   return (
-    <Svg />
+    <Svg style={{position: "relative"}} />
   )
 }

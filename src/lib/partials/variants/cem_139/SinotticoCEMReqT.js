@@ -24,7 +24,7 @@ export default function SinotticoCEMReqT() {
   }, []);
 
   return (
-    <Svg />
+    <Svg style={{position: "relative"}} />
   )
 
 }

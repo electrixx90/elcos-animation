@@ -24,6 +24,6 @@ export default function SinotticoCEMAnomaly() {
   }, []);
 
   return (
-    <Svg />
+    <Svg  />
   )
 }
