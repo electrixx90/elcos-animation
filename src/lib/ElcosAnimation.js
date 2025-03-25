@@ -394,8 +394,8 @@ export default function ElcosAnimation({
             case 'SinotticoBattB': battBPlayer.stop(); break;
             case 'SinotticoEngine': enginePlayer.stop(); break;
             case 'SinotticoEngineProt': engineProtPlayer.stop(); break;
-          }
-        }*/
+          }*/
+        }
 
         if (typeof ii[1] === 'number') clearInterval(ii[1]);
       }
