@@ -322,12 +322,12 @@ export const c_cea_eventList = {
       duration: null,
       loop: false
     }],
-    "MODE_PRESS": [{
+    "BATT_PRESS": [{
       fn: (p) => p.seekTo(1000).pause(),
       duration: null,
       loop: false
     }],
-    "MODE_ANOM": [{
+    "BATT_ANOM": [{
       fn: (p) => p.seekTo(2000).pause(),
       duration: null,
       loop: false
@@ -342,12 +342,12 @@ export const c_cea_eventList = {
       duration: null,
       loop: false
     }],
-    "MODE_PRESS": [{
+    "BATT_PRESS": [{
       fn: (p) => p.seekTo(1000).pause(),
       duration: null,
       loop: false
     }],
-    "MODE_ANOM": [{
+    "BATT_ANOM": [{
       fn: (p) => p.seekTo(2000).pause(),
       duration: null,
       loop: false

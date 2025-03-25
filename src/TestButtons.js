@@ -255,16 +255,16 @@ export default function TestButtons() {
                   <select ref={selectSinotticoBattA} onChange={e => manageEvents("SinotticoBattA", e.currentTarget.value)}>
                       <option value={null}></option>
                       <option value="SinotticoBattA,BATT_ABS">BATT_ABS</option>
-                      <option value="SinotticoBattA,MODE_PRESS">MODE_PRESS</option>
-                      <option value="SinotticoBattA,MODE_ANOM">MODE_ANOM</option>
+                      <option value="SinotticoBattA,BATT_PRESS">MODE_PRESS</option>
+                      <option value="SinotticoBattA,BATT_ANOM">MODE_ANOM</option>
                   </select>
 
                   <p>SinotticoBattB</p>
                   <select ref={selectSinotticoBattB} onChange={e => manageEvents("SinotticoBattB", e.currentTarget.value)}>
                       <option value={null}></option>
                       <option value="SinotticoBattB,BATT_ABS">BATT_ABS</option>
-                      <option value="SinotticoBattB,MODE_PRESS">MODE_PRESS</option>
-                      <option value="SinotticoBattB,MODE_ANOM">MODE_ANOM</option>
+                      <option value="SinotticoBattB,BATT_PRESS">MODE_PRESS</option>
+                      <option value="SinotticoBattB,BATT_ANOM">MODE_ANOM</option>
                   </select>
 
                   <p>SinotticoCBA</p>
