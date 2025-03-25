@@ -103,210 +103,210 @@ export default function ElcosAnimation({
     const cemReqT = document.getElementById(getSinotticoPartialId('SinotticoReqT'));
 
     if (sAlarm) {
-      //sAlarm.svgatorPlayer.stop();
+      sAlarm.svgatorPlayer.stop();
       setAlarmPlayer(sAlarm.svgatorPlayer);
     } else {
       setAlarmPlayer(null);
     }
 
     if (sEp) {
-      //sEp.svgatorPlayer.stop();
+      sEp.svgatorPlayer.stop();
       setEpPlayer(sEp.svgatorPlayer);
     } else {
       setEpPlayer(null);
     }
 
     if (sMains) {
-      //sMains.svgatorPlayer.stop();
+      sMains.svgatorPlayer.stop();
       setMainsPlayer(sMains.svgatorPlayer);
     } else {
       setMainsPlayer(null);
     }
 
     if (sMode) {
-      //sMode.svgatorPlayer.stop();
+      sMode.svgatorPlayer.stop();
       setModePlayer(sMode.svgatorPlayer);
     } else {
       setModePlayer(null);
     }
 
     if (sMotor) {
-      //sMotor.svgatorPlayer.stop();
+      sMotor.svgatorPlayer.stop();
       setMotorPlayer(sMotor.svgatorPlayer);
     } else {
       setMotorPlayer(null);
     }
 
     if (sPress) {
-      //sPress.svgatorPlayer.stop();
+      sPress.svgatorPlayer.stop();
       setPressPlayer(sPress.svgatorPlayer);
     } else {
       setPressPlayer(null);
     }
 
     if (sReq) {
-      //sReq.svgatorPlayer.stop();
+      sReq.svgatorPlayer.stop();
       setReqPlayer(sReq.svgatorPlayer);
     } else {
       setReqPlayer(null);
     }
 
     if (sReqT) {
-      //sReqT.svgatorPlayer.stop();
+      sReqT.svgatorPlayer.stop();
       setReqTPlayer(sReqT.svgatorPlayer);
     } else {
       setReqTPlayer(null);
     }
 
     if (sStatus) {
-      //sStatus.svgatorPlayer.stop();
+      sStatus.svgatorPlayer.stop();
       setStatusPlayer(sStatus.svgatorPlayer);
     } else {
       setStatusPlayer(null);
     }
 
     if (sTral) {
-      //sTral.svgatorPlayer.stop();
+      sTral.svgatorPlayer.stop();
       setTraliccioPlayer(sTral.svgatorPlayer);
     } else {
       setTraliccioPlayer(null);
     }
 
     if (sReteA) {
-      //sReteA.svgatorPlayer.stop();
+      sReteA.svgatorPlayer.stop();
       setReteAPlayer(sReteA.svgatorPlayer);
     } else {
       setReteAPlayer(null);
     }
 
     if (sReteB) {
-      //sReteB.svgatorPlayer.stop();
+      sReteB.svgatorPlayer.stop();
       setReteBPlayer(sReteB.svgatorPlayer);
     } else {
       setReteBPlayer(null);
     }
 
     if (sCBA) {
-      //sCBA.svgatorPlayer.stop();
+      sCBA.svgatorPlayer.stop();
       setCbaPlayer(sCBA.svgatorPlayer);
     } else {
       setCbaPlayer(null);
     }
 
     if (sCBB) {
-      //sCBB.svgatorPlayer.stop();
+      sCBB.svgatorPlayer.stop();
       setCbbPlayer(sCBB.svgatorPlayer);
     } else {
       setCbbPlayer(null);
     }
 
     if (sBattA) {
-      //sBattA.svgatorPlayer.stop();
+      sBattA.svgatorPlayer.stop();
       setBattAPlayer(sBattA.svgatorPlayer);
     } else {
       setBattAPlayer(null);
     }
 
     if (sBattB) {
-      //sBattB.svgatorPlayer.stop();
+      sBattB.svgatorPlayer.stop();
       setBattBPlayer(sBattB.svgatorPlayer);
     } else {
       setBattBPlayer(null);
     }
 
     if (sEngine) {
-      //sEngine.svgatorPlayer.stop();
+      sEngine.svgatorPlayer.stop();
       setEnginePlayer(sEngine.svgatorPlayer);
     } else {
       setEnginePlayer(null);
     }
 
     if (sEngineProt) {
-      //sEngineProt.svgatorPlayer.stop();
+      sEngineProt.svgatorPlayer.stop();
       setEngineProtPlayer(sEngineProt.svgatorPlayer);
     } else {
       setEngineProtPlayer(null);
     }
     
     if (cemAnomaly) {
-      //cemAnomaly.svgatorPlayer.stop();
+      cemAnomaly.svgatorPlayer.stop();
       setCemAnomalyPlayer(cemAnomaly.svgatorPlayer);
     } else {
       setCemAnomalyPlayer(null);
     }
     
     if (cemClutch) {
-      //cemClutch.svgatorPlayer.stop();
+      cemClutch.svgatorPlayer.stop();
       setCemClutchPlayer(cemClutch.svgatorPlayer);
     } else {
       setCemClutchPlayer(null);
     }
     
     if (cemEcu) {
-      //cemEcu.svgatorPlayer.stop();
+      cemEcu.svgatorPlayer.stop();
       setCemEcuPlayer(cemEcu.svgatorPlayer);
     } else {
       setCemEcuPlayer(null);
     }
     
     if (cemEngine) {
-      //cemEngine.svgatorPlayer.stop();
+      cemEngine.svgatorPlayer.stop();
       setCemEnginePlayer(cemEngine.svgatorPlayer);
     } else {
       setCemEnginePlayer(null);
     }
     
     if (cemEngineProt) {
-      //cemEngineProt.svgatorPlayer.stop();
+      cemEngineProt.svgatorPlayer.stop();
       setCemEngineProtPlayer(cemEngineProt.svgatorPlayer);
     } else {
       setCemEngineProtPlayer(null);
     }
     
     if (cemGenerator) {
-      //cemGenerator.svgatorPlayer.stop();
+      cemGenerator.svgatorPlayer.stop();
       setCemGeneratorPlayer(cemGenerator.svgatorPlayer);
     } else {
       setCemGeneratorPlayer(null);
     }
 
     if (cemMode) {
-      //cemMode.svgatorPlayer.stop();
+      cemMode.svgatorPlayer.stop();
       setCemModePlayer(cemMode.svgatorPlayer);
     } else {
       setCemModePlayer(null);
     }
 
     if (cemPowerOut) {
-      //cemPowerOut.svgatorPlayer.stop();
+      cemPowerOut.svgatorPlayer.stop();
       setCemPowerOutPlayer(cemPowerOut.svgatorPlayer);
     } else {
       setCemPowerOutPlayer(null);
     }
 
     if (cemPump) {
-      //cemPump.svgatorPlayer.stop();
+      cemPump.svgatorPlayer.stop();
       setCemPumpPlayer(cemPump.svgatorPlayer);
     } else {
       setCemPumpPlayer(null);
     }
 
     if (cemPumpProt) {
-      //cemPumpProt.svgatorPlayer.stop();
+      cemPumpProt.svgatorPlayer.stop();
       setCemPumpProtPlayer(cemPumpProt.svgatorPlayer);
     } else {
       setCemPumpProtPlayer(null);
     }
 
     if (cemReq) {
-      //cemReq.svgatorPlayer.stop();
+      cemReq.svgatorPlayer.stop();
       setCemReqPlayer(cemReq.svgatorPlayer);
     } else {
       setCemReqPlayer(null);
     }
 
     if (cemReqT) {
-      //cemReqT.svgatorPlayer.stop();
+      cemReqT.svgatorPlayer.stop();
       setCemReqTPlayer(cemReqT.svgatorPlayer);
     } else {
       setCemReqTPlayer(null);
