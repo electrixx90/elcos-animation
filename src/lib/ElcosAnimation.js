@@ -6,6 +6,7 @@ import CSmart from "./CSmart";
 import {cem_eventList} from "./data/cem_eventList";
 import {c_cea_eventList} from "./data/c_cea_eventList";
 import Cem139 from "./Cem139";
+import {stopLoop} from "./functions/createLoop";
 
 function usePrevious(value) {
   const ref = useRef();
@@ -315,16 +316,6 @@ export default function ElcosAnimation({
     setIntervals([]);
   }, [sinotticoName]);
 
-  const createInterval = (item, player) => {
-    if (item.loop) {
-      return setInterval(() => {
-        item['fn'](player);
-      }, item['duration']);
-    }
-
-    return item['fn'](player);
-  }
-
   function processPlayerEvent(player, eventName, intv) {
     if (player && events.length > 0) {
       const flattenedEvents = _.flatten(events);
@@ -337,70 +328,23 @@ export default function ElcosAnimation({
         if (intervals.length && typeof fInt !== 'undefined') {
           intv.push(fInt);
         } else {
+          // 🧼 Ferma eventuali loop attivi PRIMA di creare il nuovo
+          stopLoop(player);
+
           _.forEach(intervals, i => {
             let eventName = i[0].split('-')[0];
             if (typeof i[1] === 'number' && eventName === e[0]) clearInterval(i[1]);
           });
-          // [etichetta_evento, identificativo_intervallo]
-          intv.push([label, createInterval(item, player)]);
+
+          intv.push([label, item['fn'](player)]);
         }
       }
     }
   }
 
 
+
   useEffect(() => {
-    const evt = events.map(e => e[0]);
-    const pEvt = prevEvents.map(e => e[0]);
-
-    const diff = _.difference(pEvt, evt);
-
-    _.forEach(diff, d => {
-      const ii = intervals.find(i => i[0].startsWith(d));
-
-      if(typeof ii !== 'undefined') {
-        if(sinotticoName === 'cem_139') {
-          /*switch (d) {
-            case 'SinotticoAnomaly': cemAnomalyPlayer.stop(); break;
-            case 'SinotticoClutch': cemClutchPlayer.stop(); break;
-            case 'SinotticoEcu': cemEcuPlayer.stop(); break;
-            case 'SinotticoEngine': cemEnginePlayer.stop(); break;
-            case 'SinotticoEngineProt': cemEngineProtPlayer.stop(); break;
-            case 'SinotticoGenerator': cemGeneratorPlayer.stop(); break;
-            case 'SinotticoMode': cemModePlayer.stop(); break;
-            case 'SinotticoPowerOut': cemPowerOutPlayer.stop(); break;
-            case 'SinotticoPump': cemPumpPlayer.stop(); break;
-            case 'SinotticoPumpProt': cemPumpProtPlayer.stop(); break;
-            case 'SinotticoReq': cemReqPlayer.stop(); break;
-            case 'SinotticoReqT': cemReqTPlayer.stop(); break;
-          }*/
-        } else {
-          /*switch(d) {
-            case 'SinotticoAlarm': alarmPlayer.stop(); break;
-            case 'SinotticoEP': epPlayer.stop(); break;
-            case 'SinotticoMains': mainsPlayer.stop(); break;
-            case 'SinotticoMode': modePlayer.stop(); break;
-            case 'SinotticoMotor': motorPlayer.stop(); break;
-            case 'SinotticoPress': pressPlayer.stop(); break;
-            case 'SinotticoReq': reqPlayer.stop(); break;
-            case 'SinotticoReqT': reqTPlayer.stop(); break;
-            case 'SinotticoStatus': statusPlayer.stop(); break;
-            case 'SinotticoTraliccio': traliccioPlayer.stop(); break;
-            case 'SinotticoReteA': reteAPlayer.stop(); break;
-            case 'SinotticoReteB': reteBPlayer.stop(); break;
-            case 'SinotticoCBA': cbaPlayer.stop(); break;
-            case 'SinotticoCBB': cbbPlayer.stop(); break;
-            case 'SinotticoBattA': battAPlayer.stop(); break;
-            case 'SinotticoBattB': battBPlayer.stop(); break;
-            case 'SinotticoEngine': enginePlayer.stop(); break;
-            case 'SinotticoEngineProt': engineProtPlayer.stop(); break;
-          }*/
-        }
-
-        if (typeof ii[1] === 'number') clearInterval(ii[1]);
-      }
-    })
-
     let intv = [];
 
     processPlayerEvent(modePlayer, 'SinotticoMode', intv);

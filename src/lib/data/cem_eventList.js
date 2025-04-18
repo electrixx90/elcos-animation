@@ -1,3 +1,5 @@
+import {createLoop, createLoopFn} from "../functions/createLoop";
+
 export const cem_eventList = {
   "SinotticoAnomaly": [{
     "ANOM_NO": [{
@@ -85,17 +87,17 @@ export const cem_eventList = {
       loop: false
     }],
     "ENGINE_ON": [{
-      fn: (p) => p.seekTo(2000).play(),
+      fn: createLoopFn(2000, 3000),
       duration: 1000,
       loop: true
     }],
     "ENGINE_COOLING": [{
-     fn: (p) => p.seekTo(4000).play(),
+     fn: createLoopFn(4000, 5000),
       duration: 1000,
       loop: true
     }],
     "ENGINE_WARMING": [{
-      fn: (p) => p.seekTo(6000).play(),
+      fn: createLoopFn(6000, 7000),
       duration: 1000,
       loop: true
     }]
@@ -127,7 +129,7 @@ export const cem_eventList = {
       loop: false
     }],
     "GENERATOR_ON": [{
-      fn: (p) => p.seekTo(2000).play(),
+      fn: createLoopFn(2000, 3000),
       duration: 1000,
       loop: true
     }],
@@ -205,7 +207,7 @@ export const cem_eventList = {
       loop: false
     }],
     "PUMP_ON": [{
-      fn: (p) => p.seekTo(2000).play(),
+      fn: createLoopFn(2000, 4000),
       duration: 2000,
       loop: true
     }]
