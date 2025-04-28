@@ -33,11 +33,11 @@ export const cea_smart_eventList = {
       loop: false,
     }],
     'MAINS_ANOM': [{
-      fn: (p) => p.seekTo(5000).play(),
+      fn: createLoopFn(5000, 7000),
       loop: true,
     }],
     'MAINS_WAIT': [{
-      fn: (p) => p.seekTo(2000).play(),
+      fn: createLoopFn(2000, 4000),
       loop: true,
     }]
   }, 'elcos-sinotticomains'],
@@ -47,7 +47,7 @@ export const cea_smart_eventList = {
       loop: false
     }],
     'MOTOR_ON': [{
-      fn: (p) => p.seekTo(3000).play(),
+      fn: createLoopFn(3000, 5000),
       loop: true
     }]
   }, 'elcos-sinotticomotor_update'],
@@ -57,7 +57,7 @@ export const cea_smart_eventList = {
       loop: false
     }],
     'EP_ON': [{
-      fn: (p) => p.seekTo(2000).play(),
+      fn: createLoopFn(2000, 4000),
       loop: true
     }]
   }, 'elcos-sinotticoep-update'],
