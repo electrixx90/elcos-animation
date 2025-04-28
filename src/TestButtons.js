@@ -343,13 +343,13 @@ export default function TestButtons() {
 
                   <p>SinotticoEcu</p>
                   <select ref={selectSinotticoCEMEcu}
-                          onChange={e => manageEvents("SinotticoEcu", e.currentTarget.value)}>
+                          onChange={e => manageEvents("SinotticoECU", e.currentTarget.value)}>
                       <option value={null}></option>
-                      <option value="SinotticoEcu,ECU_ABS">ECU_ABS</option>
-                      <option value="SinotticoEcu,ECU_OK">ECU_OK</option>
-                      <option value="SinotticoEcu,ECU_AMBER">ECU_AMBER</option>
-                      <option value="SinotticoEcu,ECU_RED">ECU_RED</option>
-                      <option value="SinotticoEcu,ECU_AMBERRED">ECU_AMBERRED</option>
+                      <option value="SinotticoECU,ECU_ABS">ECU_ABS</option>
+                      <option value="SinotticoECU,ECU_OK">ECU_OK</option>
+                      <option value="SinotticoECU,ECU_AMBER">ECU_AMBER</option>
+                      <option value="SinotticoECU,ECU_RED">ECU_RED</option>
+                      <option value="SinotticoECU,ECU_AMBERRED">ECU_AMBERRED</option>
                   </select>
 
                   <p>SinotticoEngine</p>
