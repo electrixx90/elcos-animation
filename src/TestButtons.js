@@ -478,6 +478,7 @@ export default function TestButtons() {
                       <option value="SinotticoMode,MODE_OFF">MODE_OFF</option>
                       <option value="SinotticoMode,MODE_MAN">MODE_MAN</option>
                       <option value="SinotticoMode,MODE_AUT">MODE_AUT</option>
+                      <option value="SinotticoMode,MODE_TEST">MODE_TEST</option>
                   </select>
 
                   <p>SinotticoAnomaly</p>
@@ -498,7 +499,6 @@ export default function TestButtons() {
                       <option value="SinotticoGenerator,GENERATOR_ON">GENERATOR_ON</option>
                       <option value="SinotticoGenerator,GENERATOR_OK">GENERATOR_OK</option>
                       <option value="SinotticoGenerator,GENERATOR_WARNING">GENERATOR_WARNING</option>
-                      <option value="SinotticoGenerator,GENERATOR_EXCL">GENERATOR_EXCL</option>
                   </select>
 
                   <p>SinotticoEngine</p>

@@ -13,6 +13,10 @@ export const cam_335_eventList = {
     'MODE_AUT': [{
       fn: (p) => p.seekTo(3000).pause(),
       loop: false
+    }],
+    'MODE_TEST': [{
+      fn: (p) => p.seekTo(4000).pause(),
+      loop: false
     }]
   }, 'ePAqwZazVR61'],
   "SinotticoAnomaly": [{
@@ -48,10 +52,6 @@ export const cam_335_eventList = {
     }],
     "GENERATOR_WARNING": [{
       fn: (p) => p.seekTo(5000).pause(),
-      loop: false
-    }],
-    "GENERATOR_EXCL": [{
-      fn: (p) => p.seekTo(0).pause(),
       loop: false
     }]
   }, 'e2T3Zkyd5PW1'],
