@@ -41,6 +41,18 @@ export default function TestButtons() {
     const selectSinotticoCEMPumpProt = useRef(null);
     const selectSinotticoCEMReq = useRef(null);
     const selectSinotticoCEMReqT = useRef(null);
+
+    const selectSinotticoCAM335Mode = useRef(null);
+    const selectSinotticoCAM335Anomaly = useRef(null);
+    const selectSinotticoCAM335Generator = useRef(null);
+    const selectSinotticoCAM335Engine = useRef(null);
+    const selectSinotticoCAM335Mains = useRef(null);
+    const selectSinotticoCAM335ContatMains = useRef(null);
+    const selectSinotticoCAM335ContatGen = useRef(null);
+    const selectSinotticoCAM335EngineProt = useRef(null);
+    const selectSinotticoCAM335ECU = useRef(null);
+    const selectSinotticoCAM335Req = useRef(null);
+
     
     const manageEvents = (origin, value) => {
         var value = value.split(',');
@@ -98,15 +110,17 @@ export default function TestButtons() {
                   <option defaultChecked={true} value="cea_smart">CEA-SMART</option>
                   <option value="c_smart">C-SMART</option>
                   <option value="cem_139">CEM 139</option>
+                  <option value="cam_335">CAM 335</option>
               </select>
           </div>
 
           <div className="separator"></div>
 
           <div className="test-container">
-              <div className={`test-buttons ${(sinotticoName === 'cem_139') ? "d-none" : null}`}>
+              <div className={`test-buttons ${(['cem_139', 'cam_335'].includes(sinotticoName)) ? "d-none" : null}`}>
                   <p>SinotticoMode</p>
-                  <select ref={selectSinotticoMode} onChange={(e) => manageEvents("SinotticoMode", e.currentTarget.value)}>
+                  <select ref={selectSinotticoMode}
+                          onChange={(e) => manageEvents("SinotticoMode", e.currentTarget.value)}>
                       <option value={null}></option>
                       <option value="SinotticoMode,MODE_OFF">
                           MODE_OFF
@@ -126,7 +140,8 @@ export default function TestButtons() {
                   </select>
 
                   <p>SinotticoAlarm</p>
-                  <select ref={selectSinotticoAlarm} onChange={(e) => manageEvents("SinotticoAlarm", e.currentTarget.value)}>
+                  <select ref={selectSinotticoAlarm}
+                          onChange={(e) => manageEvents("SinotticoAlarm", e.currentTarget.value)}>
                       <option value={null}></option>
                       <option value="SinotticoAlarm,ALARM_NO">
                           ALARM_NO
@@ -140,7 +155,8 @@ export default function TestButtons() {
                   </select>
 
                   <p>SinotticoStatus</p>
-                  <select ref={selectSinotticoStatus} onChange={(e) => manageEvents("SinotticoStatus", e.currentTarget.value)}>
+                  <select ref={selectSinotticoStatus}
+                          onChange={(e) => manageEvents("SinotticoStatus", e.currentTarget.value)}>
                       <option value={null}></option>
                       <option value="SinotticoStatus,ANOM_NO">
                           ANOM_NO
@@ -151,7 +167,8 @@ export default function TestButtons() {
                   </select>
 
                   <p>SinotticoPress</p>
-                  <select ref={selectSinotticoPress} onChange={(e) => manageEvents("SinotticoPress", e.currentTarget.value)}>
+                  <select ref={selectSinotticoPress}
+                          onChange={(e) => manageEvents("SinotticoPress", e.currentTarget.value)}>
                       <option value={null}></option>
                       <option value="SinotticoPress,PRESS_EXCL">
                           PRESS_EXCL
@@ -165,7 +182,8 @@ export default function TestButtons() {
                   </select>
 
                   <p>SinotticoReq</p>
-                  <select ref={selectSinotticoReq} onChange={(e) => manageEvents("SinotticoReq", e.currentTarget.value)}>
+                  <select ref={selectSinotticoReq}
+                          onChange={(e) => manageEvents("SinotticoReq", e.currentTarget.value)}>
                       <option value={null}></option>
                       <option value="SinotticoReq,REQ_NO">
                           REQ_NO
@@ -179,7 +197,8 @@ export default function TestButtons() {
                   </select>
 
                   <p>SinotticoReqT</p>
-                  <select ref={selectSinotticoReqT} onChange={(e) => manageEvents("SinotticoReqT", e.currentTarget.value)}>
+                  <select ref={selectSinotticoReqT}
+                          onChange={(e) => manageEvents("SinotticoReqT", e.currentTarget.value)}>
                       <option value={null}></option>
                       <option value="SinotticoReqT,REQT_NO">
                           REQT_NO
@@ -211,7 +230,8 @@ export default function TestButtons() {
 
               <div className={`test-buttons ${(sinotticoName !== 'cea_smart') ? "d-none" : null}`}>
                   <p>SinotticoMains</p>
-                  <select ref={selectSinotticoMains} onChange={(e) => manageEvents("SinotticoMains", e.currentTarget.value)}>
+                  <select ref={selectSinotticoMains}
+                          onChange={(e) => manageEvents("SinotticoMains", e.currentTarget.value)}>
                       <option value={null}></option>
                       <option value="SinotticoMains,MAINS_ABS">
                           MAINS_ABS
@@ -228,7 +248,8 @@ export default function TestButtons() {
                   </select>
 
                   <p>SinotticoMotor</p>
-                  <select ref={selectSinotticoMotor} onChange={(e) => manageEvents("SinotticoMotor", e.currentTarget.value)}>
+                  <select ref={selectSinotticoMotor}
+                          onChange={(e) => manageEvents("SinotticoMotor", e.currentTarget.value)}>
                       <option value={null}></option>
                       <option value="SinotticoMotor,MOTOR_OFF">
                           MOTOR_OFF
@@ -252,7 +273,8 @@ export default function TestButtons() {
 
               <div className={`test-buttons ${(sinotticoName !== 'c_smart') ? "d-none" : null}`}>
                   <p>SinotticoBattA</p>
-                  <select ref={selectSinotticoBattA} onChange={e => manageEvents("SinotticoBattA", e.currentTarget.value)}>
+                  <select ref={selectSinotticoBattA}
+                          onChange={e => manageEvents("SinotticoBattA", e.currentTarget.value)}>
                       <option value={null}></option>
                       <option value="SinotticoBattA,BATT_ABS">BATT_ABS</option>
                       <option value="SinotticoBattA,BATT_PRESS">MODE_PRESS</option>
@@ -260,7 +282,8 @@ export default function TestButtons() {
                   </select>
 
                   <p>SinotticoBattB</p>
-                  <select ref={selectSinotticoBattB} onChange={e => manageEvents("SinotticoBattB", e.currentTarget.value)}>
+                  <select ref={selectSinotticoBattB}
+                          onChange={e => manageEvents("SinotticoBattB", e.currentTarget.value)}>
                       <option value={null}></option>
                       <option value="SinotticoBattB,BATT_ABS">BATT_ABS</option>
                       <option value="SinotticoBattB,BATT_PRESS">MODE_PRESS</option>
@@ -284,21 +307,24 @@ export default function TestButtons() {
                   </select>
 
                   <p>SinotticoEngineProt</p>
-                  <select ref={selectSinotticoEngineProt} onChange={e => manageEvents("SinotticoEngineProt", e.currentTarget.value)}>
+                  <select ref={selectSinotticoEngineProt}
+                          onChange={e => manageEvents("SinotticoEngineProt", e.currentTarget.value)}>
                       <option value={null}></option>
                       <option value="SinotticoEngineProt,ENGINEPROT_ON">ENGINEPROT_ON</option>
                       <option value="SinotticoEngineProt,ENGINEPROT_OFF">ENGINEPROT_OFF</option>
                   </select>
 
                   <p>SinotticoEngine</p>
-                  <select ref={selectSinotticoEngine} onChange={e => manageEvents("SinotticoEngine", e.currentTarget.value)}>
+                  <select ref={selectSinotticoEngine}
+                          onChange={e => manageEvents("SinotticoEngine", e.currentTarget.value)}>
                       <option value={null}></option>
                       <option value="SinotticoEngine,ENGINE_ON">ENGINE_ON</option>
                       <option value="SinotticoEngine,ENGINE_OFF">ENGINE_OFF</option>
                   </select>
 
                   <p>SinotticoReteA</p>
-                  <select ref={selectSinotticoReteA} onChange={e => manageEvents("SinotticoReteA", e.currentTarget.value)}>
+                  <select ref={selectSinotticoReteA}
+                          onChange={e => manageEvents("SinotticoReteA", e.currentTarget.value)}>
                       <option value={null}></option>
                       <option value="SinotticoReteA,CBRETE_ABS">CBRETE_ABS</option>
                       <option value="SinotticoReteA,CBRETE_OK">CBRETE_OK</option>
@@ -306,7 +332,8 @@ export default function TestButtons() {
                   </select>
 
                   <p>SinotticoReteB</p>
-                  <select ref={selectSinotticoReteB} onChange={e => manageEvents("SinotticoReteB", e.currentTarget.value)}>
+                  <select ref={selectSinotticoReteB}
+                          onChange={e => manageEvents("SinotticoReteB", e.currentTarget.value)}>
                       <option value={null}></option>
                       <option value="SinotticoReteB,CBRETE_ABS">CBRETE_ABS</option>
                       <option value="SinotticoReteB,CBRETE_OK">CBRETE_OK</option>
@@ -314,7 +341,8 @@ export default function TestButtons() {
                   </select>
 
                   <p>SinotticoTraliccio</p>
-                  <select ref={selectSinotticoTraliccio} onChange={e => manageEvents("SinotticoTraliccio", e.currentTarget.value)}>
+                  <select ref={selectSinotticoTraliccio}
+                          onChange={e => manageEvents("SinotticoTraliccio", e.currentTarget.value)}>
                       <option value={null}></option>
                       <option value="SinotticoTraliccio,TRALICCIO_NO">TRALICCIO_NO</option>
                       <option value="SinotticoTraliccio,TRALICCIO_YES">TRALICCIO_YES</option>
@@ -435,6 +463,106 @@ export default function TestButtons() {
                       <option value="SinotticoReqT,REQT_INCALL">REQT_INCALL</option>
                       <option value="SinotticoReqT,REQT_TIMER">REQT_TIMER</option>
                       <option value="SinotticoReqT,REQT_REMOTE">REQT_REMOTE</option>
+                  </select>
+
+                  <div className="send-data-button-container">
+                      <button onClick={(e) => setEvents(waitingEvents)}>INVIA DATI</button>
+                  </div>
+              </div>
+
+              <div className={`test-buttons ${(sinotticoName !== 'cam_335') ? "d-none" : null}`}>
+                  <p>SinotticoMode</p>
+                  <select ref={selectSinotticoCAM335Mode}
+                          onChange={e => manageEvents("SinotticoMode", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoMode,MODE_OFF">MODE_OFF</option>
+                      <option value="SinotticoMode,MODE_MAN">MODE_MAN</option>
+                      <option value="SinotticoMode,MODE_AUT">MODE_AUT</option>
+                  </select>
+
+                  <p>SinotticoAnomaly</p>
+                  <select ref={selectSinotticoCAM335Anomaly}
+                          onChange={e => manageEvents("SinotticoAnomaly", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoAnomaly,ANOM_NO">ANOM_NO</option>
+                      <option value="SinotticoAnomaly,ANOM_AMBER">ANOM_AMBER</option>
+                      <option value="SinotticoAnomaly,ANOM_RED">ANOM_RED</option>
+                      <option value="SinotticoAnomaly,ANOM_AMBERRED">ANOM_AMBERRED</option>
+                  </select>
+
+                  <p>SinotticoGenerator</p>
+                  <select ref={selectSinotticoCAM335Generator}
+                          onChange={e => manageEvents("SinotticoGenerator", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoGenerator,GENERATOR_OFF">GENERATOR_OFF</option>
+                      <option value="SinotticoGenerator,GENERATOR_ON">GENERATOR_ON</option>
+                      <option value="SinotticoGenerator,GENERATOR_OK">GENERATOR_OK</option>
+                      <option value="SinotticoGenerator,GENERATOR_WARNING">GENERATOR_WARNING</option>
+                      <option value="SinotticoGenerator,GENERATOR_EXCL">GENERATOR_EXCL</option>
+                  </select>
+
+                  <p>SinotticoEngine</p>
+                  <select ref={selectSinotticoCAM335Engine}
+                          onChange={e => manageEvents("SinotticoEngine", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoEngine,ENGINE_OFF">ENGINE_OFF</option>
+                      <option value="SinotticoEngine,ENGINE_ON">ENGINE_ON</option>
+                      <option value="SinotticoEngine,ENGINE_COOLING">ENGINE_COOLING</option>
+                      <option value="SinotticoEngine,ENGINE_WARMING">ENGINE_WARMING</option>
+                  </select>
+
+                  <p>SinotticoMains</p>
+                  <select ref={selectSinotticoCAM335Mains}
+                          onChange={e => manageEvents("SinotticoMains", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoMains,MAINS_ABS">MAINS_ABS</option>
+                      <option value="SinotticoMains,MAINS_PRES">MAINS_PRES</option>
+                      <option value="SinotticoMains,MAINS_ANOM">MAINS_ANOM</option>
+                      <option value="SinotticoMains,MAINS_WAIT">MAINS_WAIT</option>
+                  </select>
+
+                  <p>SinotticoContatMains</p>
+                  <select ref={selectSinotticoCAM335ContatMains}
+                          onChange={e => manageEvents("SinotticoContatMains", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoContatMains,CONTATMAINS_OFF">CONTATMAINS_OFF</option>
+                      <option value="SinotticoContatMains,CONTATMAINS_ON">CONTATMAINS_ON</option>
+                  </select>
+
+                  <p>SinotticoContatGen</p>
+                  <select ref={selectSinotticoCAM335ContatGen}
+                          onChange={e => manageEvents("SinotticoContatGen", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoContatGen,CONTATGEN_OFF">CONTATGEN_OFF</option>
+                      <option value="SinotticoContatGen,CONTATGEN_ON">CONTATGEN_ON</option>
+                  </select>
+
+                  <p>SinotticoEngineProt</p>
+                  <select ref={selectSinotticoCAM335EngineProt}
+                          onChange={e => manageEvents("SinotticoEngineProt", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoEngineProt,ENGINEPROT_OFF">ENGINEPROT_OFF</option>
+                      <option value="SinotticoEngineProt,ENGINEPROT_ON">ENGINEPROT_ON</option>
+                  </select>
+
+                  <p>SinotticoEcu</p>
+                  <select ref={selectSinotticoCEMEcu}
+                          onChange={e => manageEvents("SinotticoECU", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoECU,ECU_ABS">ECU_ABS</option>
+                      <option value="SinotticoECU,ECU_OK">ECU_OK</option>
+                      <option value="SinotticoECU,ECU_AMBER">ECU_AMBER</option>
+                      <option value="SinotticoECU,ECU_RED">ECU_RED</option>
+                      <option value="SinotticoECU,ECU_AMBERRED">ECU_AMBERRED</option>
+                  </select>
+
+                  <p>SinotticoReq</p>
+                  <select ref={selectSinotticoCAM335Req}
+                          onChange={e => manageEvents("SinotticoReq", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoReq,REQ_NO">REQ_NO</option>
+                      <option value="SinotticoReq,REQ_START">REQ_START</option>
+                      <option value="SinotticoReq,REQ_STOP">REQ_STOP</option>
                   </select>
 
                   <div className="send-data-button-container">
