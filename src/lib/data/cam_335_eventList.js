@@ -15,10 +15,10 @@ export const cam_335_eventList = {
       loop: false
     }],
     'MODE_TEST': [{
-      fn: (p) => p.seekTo(4000).pause(),
+      fn: (p) => p.seekTo(4900).pause(),
       loop: false
     }]
-  }, 'ePAqwZazVR61'],
+  }, 'eDL5MqhGx3U1'],
   "SinotticoAnomaly": [{
     "ANOM_NO": [{
       fn: (p) => p.seekTo(1000).pause(),
