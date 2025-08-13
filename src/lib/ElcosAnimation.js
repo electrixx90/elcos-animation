@@ -60,6 +60,7 @@ export default function ElcosAnimation({
     case 'cem_139':
       return (<Cem139 events={events} sinotticoName={sinotticoName} />);
 
+    case 'cam_405':
     case 'cam_335':
       return (<Cam335 events={events} sinotticoName={sinotticoName} />);
   }

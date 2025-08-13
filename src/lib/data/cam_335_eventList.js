@@ -72,7 +72,7 @@ export const cam_335_eventList = {
       fn: createLoopFn(6000, 7000),
       loop: true,
     }]
-  }, 'ewsvbUcm2tl1'],
+  }, 'ei7GI52nLeZ1'],
   'SinotticoMains': [{
     'MAINS_ABS': [{
       fn: (p) => p.seekTo(3000).pause(),
@@ -90,7 +90,7 @@ export const cam_335_eventList = {
       fn: createLoopFn(4000, 6000),
       loop: true,
     }]
-  }, 'eDiVEysBNcG1'],
+  }, 'ehIUEHZeW8R1'],
   'SinotticoContatMains': [{
     'CONTATMAINS_OFF': [{
       fn: (p) => p.seekTo(1000).pause(),
@@ -100,7 +100,7 @@ export const cam_335_eventList = {
       fn: (p) => p.seekTo(0).pause(),
       loop: false
     }]
-  }, 'eBE9Xndfs8b1'],
+  }, 'eQTw64jCcpW1'],
   'SinotticoContatGen': [{
     "CONTATGEN_OFF": [{
       fn: (p) => p.seekTo(1000).pause(),
@@ -120,7 +120,7 @@ export const cam_335_eventList = {
       fn: (p) => p.seekTo(2000).pause(),
       loop: false
     }]
-  }, 'eRw5AiVzOpD1'],
+  }, 'eeSE5mcsrIP1'],
   "SinotticoECU": [{
     "ECU_ABS": [{
       fn: (p) => p.seekTo(0).pause(),
@@ -142,7 +142,7 @@ export const cam_335_eventList = {
       fn: (p) => p.seekTo(4000).pause(),
       loop: false
     }],
-  }, 'eLXgGlVZS361'],
+  }, 'e2gABuqLbPW1'],
   "SinotticoReq": [{
     "REQ_NO": [{
       fn: (p) => p.seekTo(0).pause(),
