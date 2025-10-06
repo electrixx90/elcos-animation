@@ -6,6 +6,7 @@ import CSmart from "./CSmart";
 import Cem139 from "./Cem139";
 import {stopLoop} from "./functions/manageLoop";
 import Cam335 from "./Cam335";
+import Cam130_10 from "./Cam130_10";
 
 export function processPlayerEvent(player, eventName, intv, intervals, eventList, events) {
   if (player && events.length > 0) {
@@ -63,5 +64,8 @@ export default function ElcosAnimation({
     case 'cam_405':
     case 'cam_335':
       return (<Cam335 events={events} sinotticoName={sinotticoName} />);
+
+    case 'cam_130_10':
+      return (<Cam130_10 events={events} sinotticoName={sinotticoName} />);
   }
 }

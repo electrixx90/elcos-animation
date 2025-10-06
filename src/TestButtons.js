@@ -111,13 +111,14 @@ export default function TestButtons() {
                   <option value="c_smart">C-SMART</option>
                   <option value="cem_139">CEM 139</option>
                   <option value="cam_335">CAM 335</option>
+                  <option value="cam_130_10">CAM 130 10</option>
               </select>
           </div>
 
           <div className="separator"></div>
 
           <div className="test-container">
-              <div className={`test-buttons ${(['cem_139', 'cam_335'].includes(sinotticoName)) ? "d-none" : null}`}>
+              <div className={`test-buttons ${(['cem_139', 'cam_335', 'cam_130_10'].includes(sinotticoName)) ? "d-none" : null}`}>
                   <p>SinotticoMode</p>
                   <select ref={selectSinotticoMode}
                           onChange={(e) => manageEvents("SinotticoMode", e.currentTarget.value)}>
@@ -527,6 +528,88 @@ export default function TestButtons() {
                       <option value={null}></option>
                       <option value="SinotticoContatMains,CONTATMAINS_OFF">CONTATMAINS_OFF</option>
                       <option value="SinotticoContatMains,CONTATMAINS_ON">CONTATMAINS_ON</option>
+                  </select>
+
+                  <p>SinotticoContatGen</p>
+                  <select ref={selectSinotticoCAM335ContatGen}
+                          onChange={e => manageEvents("SinotticoContatGen", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoContatGen,CONTATGEN_OFF">CONTATGEN_OFF</option>
+                      <option value="SinotticoContatGen,CONTATGEN_ON">CONTATGEN_ON</option>
+                  </select>
+
+                  <p>SinotticoEngineProt</p>
+                  <select ref={selectSinotticoCAM335EngineProt}
+                          onChange={e => manageEvents("SinotticoEngineProt", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoEngineProt,ENGINEPROT_OFF">ENGINEPROT_OFF</option>
+                      <option value="SinotticoEngineProt,ENGINEPROT_ON">ENGINEPROT_ON</option>
+                  </select>
+
+                  <p>SinotticoEcu</p>
+                  <select ref={selectSinotticoCEMEcu}
+                          onChange={e => manageEvents("SinotticoECU", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoECU,ECU_ABS">ECU_ABS</option>
+                      <option value="SinotticoECU,ECU_OK">ECU_OK</option>
+                      <option value="SinotticoECU,ECU_AMBER">ECU_AMBER</option>
+                      <option value="SinotticoECU,ECU_RED">ECU_RED</option>
+                      <option value="SinotticoECU,ECU_AMBERRED">ECU_AMBERRED</option>
+                  </select>
+
+                  <p>SinotticoReq</p>
+                  <select ref={selectSinotticoCAM335Req}
+                          onChange={e => manageEvents("SinotticoReq", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoReq,REQ_NO">REQ_NO</option>
+                      <option value="SinotticoReq,REQ_START">REQ_START</option>
+                      <option value="SinotticoReq,REQ_STOP">REQ_STOP</option>
+                  </select>
+
+                  <div className="send-data-button-container">
+                      <button onClick={(e) => setEvents(waitingEvents)}>INVIA DATI</button>
+                  </div>
+              </div>
+
+              <div className={`test-buttons ${(sinotticoName !== 'cam_130_10') ? "d-none" : null}`}>
+                  <p>SinotticoMode</p>
+                  <select ref={selectSinotticoCAM335Mode}
+                          onChange={e => manageEvents("SinotticoMode", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoMode,MODE_OFF">MODE_OFF</option>
+                      <option value="SinotticoMode,MODE_MAN">MODE_MAN</option>
+                      <option value="SinotticoMode,MODE_AUT">MODE_AUT</option>
+                      <option value="SinotticoMode,MODE_TEST">MODE_TEST</option>
+                  </select>
+
+                  <p>SinotticoAnomaly</p>
+                  <select ref={selectSinotticoCAM335Anomaly}
+                          onChange={e => manageEvents("SinotticoAnomaly", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoAnomaly,ANOM_NO">ANOM_NO</option>
+                      <option value="SinotticoAnomaly,ANOM_AMBER">ANOM_AMBER</option>
+                      <option value="SinotticoAnomaly,ANOM_RED">ANOM_RED</option>
+                      <option value="SinotticoAnomaly,ANOM_AMBERRED">ANOM_AMBERRED</option>
+                  </select>
+
+                  <p>SinotticoGenerator</p>
+                  <select ref={selectSinotticoCAM335Generator}
+                          onChange={e => manageEvents("SinotticoGenerator", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoGenerator,GENERATOR_OFF">GENERATOR_OFF</option>
+                      <option value="SinotticoGenerator,GENERATOR_ON">GENERATOR_ON</option>
+                      <option value="SinotticoGenerator,GENERATOR_OK">GENERATOR_OK</option>
+                      <option value="SinotticoGenerator,GENERATOR_WARNING">GENERATOR_WARNING</option>
+                  </select>
+
+                  <p>SinotticoEngine</p>
+                  <select ref={selectSinotticoCAM335Engine}
+                          onChange={e => manageEvents("SinotticoEngine", e.currentTarget.value)}>
+                      <option value={null}></option>
+                      <option value="SinotticoEngine,ENGINE_OFF">ENGINE_OFF</option>
+                      <option value="SinotticoEngine,ENGINE_ON">ENGINE_ON</option>
+                      <option value="SinotticoEngine,ENGINE_COOLING">ENGINE_COOLING</option>
+                      <option value="SinotticoEngine,ENGINE_WARMING">ENGINE_WARMING</option>
                   </select>
 
                   <p>SinotticoContatGen</p>
