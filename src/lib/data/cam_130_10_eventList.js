@@ -10,8 +10,8 @@ export const cam_130_10_eventList = {
 
   "SinotticoAnomaly": [{
     "ANOM_NO": [{fn: (p) => p.seekTo(1000).pause(), loop: false}],
-    "ANOM_AMBER": [{fn: (p) => p.seekTo(2000).pause(), loop: false}],
-    "ANOM_RED": [{fn: (p) => p.seekTo(3000).pause(), loop: false}],
+    "ANOM_AMBER": [{fn: (p) => p.seekTo(3000).pause(), loop: false}],
+    "ANOM_RED": [{fn: (p) => p.seekTo(2000).pause(), loop: false}],
     "ANOM_AMBERRED": [{fn: (p) => p.seekTo(4000).pause(), loop: false}],
   }, 'eZ2ib0RDrPX1'],
 
